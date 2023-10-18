@@ -12,45 +12,38 @@
         font-size: 20px; /* Dimensione del font */
      font-family: 'Arial Black', sans-serif;
 
-        padding: 8px 13px; /* Spaziatura interna */
+        padding: 14px 13px; /* Spaziatura interna */
         border: none; /* Nessun bordo */
         border-radius: 50px; /* Angoli arrotondati */
         cursor: pointer; /* Cambia il cursore al passaggio sopra il pulsante */
-        position: absolute; /* Posizionamento assoluto */
-        top: 118px; /* Posizione Y (regola questa posizione) */
-        left: 597px; /* Posizione X (regola questa posizione) */
-		scale: 90%;
+		scale: 100%;
     }
 	
-	#submitButton2 { 
-	background-color: #ffffff; /* Colore di sfondo */
+	    #submitButton2 {
+        background-color: #ffffff; /* Colore di sfondo */
         color: #74cdd0; /* Colore del testo */
         font-size: 20px; /* Dimensione del font */
      font-family: 'Arial Black', sans-serif;
-	         padding: 8px 13px; /* Spaziatura interna */
+
+        padding: 14px 13px; /* Spaziatura interna */
         border: none; /* Nessun bordo */
         border-radius: 50px; /* Angoli arrotondati */
         cursor: pointer; /* Cambia il cursore al passaggio sopra il pulsante */
-        position: absolute; /* Posizionamento assoluto */
-        top: 373px; /* Posizione Y (regola questa posizione) */
-        left: 597px; /* Posizione X (regola questa posizione) */
-		scale: 90%;
-	}
+		scale: 100%;
+    }
 	
-		#submitButton3 { 
-	background-color: #ffffff; /* Colore di sfondo */
+	    #submitButton3 {
+        background-color: #ffffff; /* Colore di sfondo */
         color: #74cdd0; /* Colore del testo */
         font-size: 20px; /* Dimensione del font */
      font-family: 'Arial Black', sans-serif;
-	         padding: 8px 13px; /* Spaziatura interna */
+
+        padding: 14px 13px; /* Spaziatura interna */
         border: none; /* Nessun bordo */
         border-radius: 50px; /* Angoli arrotondati */
         cursor: pointer; /* Cambia il cursore al passaggio sopra il pulsante */
-        position: absolute; /* Posizionamento assoluto */
-        top: 628px; /* Posizione Y (regola questa posizione) */
-        left: 597px; /* Posizione X (regola questa posizione) */
-		scale: 90%;
-	}
+		scale: 100%;
+    }
 	
 
     /* Stile al passaggio del mouse (hover) */
@@ -60,7 +53,7 @@
 	
 	
         body {
-            background-image: url('1.png');
+            background-image: url('test.png');
             background-size: contain;
             background-repeat: no-repeat;
             background-position: 0 0;
@@ -136,32 +129,23 @@ position: absolute;
 
     <div class="container">
         <!-- Prima istanza del tuo contenuto -->
-        <div class="tassello" style="margin-top: 20px;">
-            <p class="text1">Dedicala alla tua persona del cuore!</p>
-            <input type="text" id="messageInput" maxlength="40" placeholder="Scrivi la tua dedica">
-            <p class="text2">“Last Christmas” - Wham!</p> <!-- Aggiungi il testo desiderato qui -->
-            <button id="submitButton">INVIA</button>
-			<p class="ingombro">
-        </div>
-        
+      <div class="tassello" style="margin-top: 114px; position: relative;">
+    <input type="text" id="messageInput" maxlength="40" placeholder="Scrivi la tua dedica">
+    <button id="submitButton" style="position: absolute; right: 0; top: 10; font-family: Arial, sans-serif;">INVIA</button>
+</div>
+
        
 		
-        <div class="tassello" style="margin-top: 20px;">
-            <p class="text1">Dedicala alla tua persona del cuore!</p>
+        <div class="tassello" style="margin-top: 202px;">
             <input type="text" id="messageInput2" maxlength="40" placeholder="Scrivi la tua dedica">
-            <p class="text2">“Happy Xmas (War Is Over)” - John Lennon & Yoko Ono</p> <!-- Aggiungi il testo desiderato qui -->
-            <button id="submitButton2">INVIA</button>
-			<p class="ingombro">
+<button id="submitButton" style="position: absolute; right: 0; top: 10; font-family: Arial, sans-serif;">INVIA</button>
         </div>
 		
 		
 	
-		        <div class="tassello" style="margin-top: 20px;">
-            <p class="text1">Dedicala alla tua persona del cuore!</p>
+		        <div class="tassello" style="margin-top: 204px;">
             <input type="text" id="messageInput3" maxlength="40" placeholder="Scrivi la tua dedica">
-            <p class="text2">“Christmas Lights” - Coldplay</p> <!-- Aggiungi il testo desiderato qui -->
-            <button id="submitButton3">INVIA</button>
-			<p class="ingombro">
+            <button id="submitButton" style="position: absolute; right: 0; top: 10; font-family: Arial, sans-serif;">INVIA</button>
         </div>
 
         <!-- Aggiungi ulteriori istanze del tuo contenuto secondo necessità -->
