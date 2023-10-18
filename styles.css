@@ -51,8 +51,6 @@
   width: 1080px;
   height: 255px;
   background-color: rgba(255, 255, 255, 0.7);
-    filter: grayscale(100%); /* Converti tutto il contenuto in bianco e nero */
-
   position: absolute;
   top: 0;
   left: 0;
@@ -62,11 +60,11 @@
 }
 
 
-.forma1 {
+#forma2 {
   margin-top: 255px;
 }
 
-.forma2 {
+#forma3 {
   margin-top: 510px;
 }
 

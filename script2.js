@@ -67,15 +67,15 @@ function nascondiFormaInBaseAllaData() {
   const forma2 = document.getElementById("forma2");
   const forma3 = document.getElementById("forma3");
 
-  if (mese === 10 && giorno >= 16 && giorno <= 25) {
+  if (mese === 10 && giorno >= 17 && giorno <= 25) {
     forma1.classList.remove("overlay");
   }
 
-  if (mese === 10 && giorno >= 17 && giorno <= 25) {
+  if (mese === 10 && giorno >= 18 && giorno <= 25) {
     forma2.classList.remove("overlay");
   }
 
-  if (mese === 10 && giorno >= 18 && giorno <= 25) {
+  if (mese === 10 && giorno >= 20 && giorno <= 25) {
     forma3.classList.remove("overlay");
   }
 }
