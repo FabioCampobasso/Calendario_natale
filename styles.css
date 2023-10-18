@@ -24,6 +24,27 @@
 	color: #fff
 
 	}
+	
+		 .text1{
+	   font-family: 'AlternateGotNo3DOT';
+	color: #fff
+
+	}
+	
+		#submitButton2 { 
+	background-color: #ffffff; /* Colore di sfondo */
+        color: #74cdd0; /* Colore del testo */
+        font-size: 20px; /* Dimensione del font */
+     font-family: 'Arial Black', sans-serif;
+	         padding: 8px 13px; /* Spaziatura interna */
+        border: none; /* Nessun bordo */
+        border-radius: 50px; /* Angoli arrotondati */
+        cursor: pointer; /* Cambia il cursore al passaggio sopra il pulsante */
+        position: absolute; /* Posizionamento assoluto */
+        top: 373px; /* Posizione Y (regola questa posizione) */
+        left: 597px; /* Posizione X (regola questa posizione) */
+		scale: 90%;
+	}
 
 
 .overlay {
