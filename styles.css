@@ -25,16 +25,17 @@
 
 	}
 	
-.text1 {
-    font-family: 'Oswald-Medium', sans-serif; /* Specifica il font "Oswald-Medium" e usa "sans-serif" come alternativa */
-    color: #fff;
-}
+		 .text1{
+	   font-family: 'AlternateGotNo3DOT', 'Oswald-Medium';
+	color: #fff
+
+	}
 	
 		#submitButton2 { 
 	background-color: #ffffff; /* Colore di sfondo */
         color: #74cdd0; /* Colore del testo */
         font-size: 20px; /* Dimensione del font */
-     font-family: 'Arial Black', Arial, sans-serif;
+     font-family: 'Arial Black', sans-serif;
 	         padding: 8px 13px; /* Spaziatura interna */
         border: none; /* Nessun bordo */
         border-radius: 50px; /* Angoli arrotondati */
