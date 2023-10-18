@@ -13,6 +13,11 @@
     100% {
         transform: translateY(100vh) rotate(360deg);
     }
+@font-face {
+    font-family: 'Oswald';
+    src: url('Oswald-Medium.ttf') format('truetype');
+    /* Puoi aggiungere altri formati di tipo di carattere se necessario */
+}
 
 
 }
