@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>La Tua Dedica</title>
+    <link rel="stylesheet" type="text/css" href="snow.css">
+    <style>
+        body {
+            background-image: url('biglietto3.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: 0 0;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+           border: 1px solid #000;
+            position: relative;
+        }
+
+
+    #dedicationMessage {
+        font-family: 'AlternateGotNo3DOT';
+        font-size: 38px;
+		 line-height: 1;
+        text-align: left;
+        color: #508a8c;
+        text-transform: uppercase;
+        position: absolute;
+        left: 70px; /* Sposta il messaggio 85 pixel a destra */
+        top: -185px; /* Sposta il messaggio 200 pixel verso l'alto */
+       white-space: pre-line; /* Per mantenere gli spazi e andare a capo solo dove vogliamo */
+        overflow-wrap: break-word;
+		 width: 320px; /* Imposta la larghezza del container */
+    height: 100px;
+		//border: 1px solid #000;
+    }
+
+
+
+
+        .button-container {
+		position: absolute;
+		background-color: transparent;
+           left: 60px; /* Sposta il messaggio 100 pixel a destra */
+            top: -255px;
+			scale: 50%;
+			opacity: 0;
+			
+        }
+
+        .link-button {
+            font-family: 'AlternateGotNo3DOT';
+            font-size: 20px;
+            color: #508a8c;
+            text-transform: uppercase;
+            text-decoration: none;
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #fff;
+            border: 2px solid #508a8c;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div id="snow-container"></div>
+    <script src="snow.js"></script>
+
+    <div class="container">
+        <p id="dedicationMessage"></p>
+
+        <!-- Pulsante "Ascolta ora" -->
+        <div class="button-container">
+            <a href="URL_DEL_LINK_DA_CONDIVIDERE" class="link-button">Visita il Link</a>
+        </div>
+    </div>
+
+<script>
+    const dedicationMessage = document.getElementById('dedicationMessage');
+    const text = dedicationMessage.textContent;
+
+    // Suddividi il testo in parole
+    const words = text.split(' ');
+
+    // Inizializza due righe di testo
+    let line1 = '';
+    let line2 = '';
+
+    for (let i = 0; i < words.length; i++) {
+        if (i < 3) {
+            line1 += words[i] + ' ';
+        } else {
+            line2 += words[i] + ' ';
+        }
+    }
+
+    dedicationMessage.innerHTML = `${line1.trim()}<br>${line2.trim()}`;
+</script>
+
+    <script>
+        // Ottieni il messaggio dalla query string dell'URL
+        var queryString = window.location.search;
+        var urlParams = new URLSearchParams(queryString);
+        var message = urlParams.get("message");
+
+        // Inserisci il messaggio nella pagina in maiuscolo
+        var dedicationMessageElement = document.getElementById("dedicationMessage");
+        dedicationMessageElement.textContent = message.toUpperCase();
+    </script>
+</body>
+</html>
+

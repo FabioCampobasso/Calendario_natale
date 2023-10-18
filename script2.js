@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", function() {
             var encodedMessage = encodeURIComponent(message);
 
             // Costruisci l'URL della nuova pagina con il messaggio come parametro
-            var newPageURL = "dedica2.html?message=" + encodedMessage;
+            var newPageURL = "dedica3.html?message=" + encodedMessage;
 
             // Reindirizza l'utente alla nuova pagina
             window.location.href = newPageURL;
