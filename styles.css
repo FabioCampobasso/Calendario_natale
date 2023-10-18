@@ -18,34 +18,18 @@
         text-align: center;
         padding: 20px;
     }
-	
-	@font-face {
-    font-family: 'Oswald';
-    src: url('Oswald-Medium.ttf') format('truetype'); /* Assicurati che il percorso al font sia corretto */
-    font-weight: normal;
-    font-style: normal;
-}
+	 .text2 {
+	    font-family: 'Arial', sans-serif;
+    font-weight: bold;
+	color: #fff
 
+	}
 	
-        .text1 {
-            font-size: 41px; /* Dimensioni del testo per la prima frase */
-            text-align: center; /* Allinea il testo al centro orizzontalmente */
-           font-family: 'Oswald', sans-serif; /* Applica il font personalizzato per la prima frase */
-            margin-bottom: 10px; /* Imposta la distanza tra la frase e la barra di ricerca (regola il valore secondo le tue esigenze) */
-            color: #fff;
-        }
-	
-        .text2 {
-            font-size: 27px; /* Dimensioni del testo per la seconda frase */
-            text-align: center; /* Allinea il testo al centro orizzontalmente */
-           font-family: 'Arial', sans-serif;
-font-weight: bold
-position: absolute;
-    top: 300px;
-            color: #ffffff; /* Cambia colore del testo per la seconda frase */	
-        }
-		
+		 .text1{
+	   font-family: 'AlternateGotNo3DOT';
+	color: #fff
 
+	}
 	
 		#submitButton2 { 
 	background-color: #ffffff; /* Colore di sfondo */
