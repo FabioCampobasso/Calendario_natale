@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <style>
+	
+
+	
+	    #submitButton {
+        background-color: #ffffff; /* Colore di sfondo */
+        color: #74cdd0; /* Colore del testo */
+        font-size: 20px; /* Dimensione del font */
+     font-family: 'Arial Black', sans-serif;
+
+        padding: 8px 13px; /* Spaziatura interna */
+        border: none; /* Nessun bordo */
+        border-radius: 50px; /* Angoli arrotondati */
+        cursor: pointer; /* Cambia il cursore al passaggio sopra il pulsante */
+        position: absolute; /* Posizionamento assoluto */
+        top: 118px; /* Posizione Y (regola questa posizione) */
+        left: 597px; /* Posizione X (regola questa posizione) */
+		scale: 90%;
+    }
+	
+	#submitButton2 { 
+	background-color: #ffffff; /* Colore di sfondo */
+        color: #74cdd0; /* Colore del testo */
+        font-size: 20px; /* Dimensione del font */
+     font-family: 'Arial Black', sans-serif;
+	         padding: 8px 13px; /* Spaziatura interna */
+        border: none; /* Nessun bordo */
+        border-radius: 50px; /* Angoli arrotondati */
+        cursor: pointer; /* Cambia il cursore al passaggio sopra il pulsante */
+        position: absolute; /* Posizionamento assoluto */
+        top: 373px; /* Posizione Y (regola questa posizione) */
+        left: 597px; /* Posizione X (regola questa posizione) */
+		scale: 90%;
+	}
+	
+		#submitButton3 { 
+	background-color: #ffffff; /* Colore di sfondo */
+        color: #74cdd0; /* Colore del testo */
+        font-size: 20px; /* Dimensione del font */
+     font-family: 'Arial Black', sans-serif;
+	         padding: 8px 13px; /* Spaziatura interna */
+        border: none; /* Nessun bordo */
+        border-radius: 50px; /* Angoli arrotondati */
+        cursor: pointer; /* Cambia il cursore al passaggio sopra il pulsante */
+        position: absolute; /* Posizionamento assoluto */
+        top: 628px; /* Posizione Y (regola questa posizione) */
+        left: 597px; /* Posizione X (regola questa posizione) */
+		scale: 90%;
+	}
+	
+
+    /* Stile al passaggio del mouse (hover) */
+    #submitButton:hover {
+        background-color: #ffffff; /* Colore di sfondo al passaggio del mouse */
+    }
+	
+	
+        body {
+            background-image: url('1.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: 0 0;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+        }
+
+        /* Stile per la barra di input */
+        .container {
+		
+     
+    
+        
+        }
+
+        input[type="text"] {
+            border: none;
+            border-radius: 50px;
+            padding: 0px;
+            background-color: #74cdd0;
+            color: #fff;
+            font-family: 'Arial';
+            font-size: 26px;
+            outline: none;
+            width: 690px;
+            height: 52px;
+            text-align: center; /* Allinea il testo al centro orizzontalmente */
+            
+        }
+
+        input[type="text"]::placeholder {
+            color: #bf3630;
+        }
+		
+        .text1 {
+            font-size: 50px; /* Dimensioni del testo per la prima frase */
+            text-align: center; /* Allinea il testo al centro orizzontalmente */
+            font-family: 'AlternateGotNo3DOT'; /* Applica il font personalizzato per la prima frase */
+            margin-bottom: 10px; /* Imposta la distanza tra la frase e la barra di ricerca (regola il valore secondo le tue esigenze) */
+            color: #fff;
+        }
+
+        .text2 {
+            font-size: 27px; /* Dimensioni del testo per la seconda frase */
+            text-align: center; /* Allinea il testo al centro orizzontalmente */
+           font-family: 'Arial', sans-serif;
+font-weight: bold
+position: absolute;
+    top: 300px;
+            color: #ffffff; /* Cambia colore del testo per la seconda frase */	
+        }
+		
+		.ingombro {
+    width: 100px; /* Larghezza desiderata */
+    height: 2.8px; /* Altezza desiderata */
+    //border: 2px solid #000; /* Bordo nero visibile */
+    background-color: transparent; /* Sfondo trasparente */
+    margin-bottom: 2px; /* Ingombro di 100px dal basso */
+}
+		
+		   
+    </style>
+</head>
+<body>
+
+<div id="forma1" class="overlay" style="margin-top: 0px;"></div>
+<div id="forma2" class="overlay" style="margin-top: 255px;"></div>
+<div id="forma3" class="overlay" style="margin-top: 510px;"></div>
+
+    <div class="container">
+        <!-- Prima istanza del tuo contenuto -->
+        <div class="tassello" style="margin-top: 20px;">
+            <p class="text1">Dedicala alla tua persona del cuore!</p>
+            <input type="text" id="messageInput" maxlength="40" placeholder="Scrivi la tua dedica">
+            <p class="text2">“Last Christmas” - Wham!</p> <!-- Aggiungi il testo desiderato qui -->
+            <button id="submitButton">INVIA</button>
+			<p class="ingombro">
+        </div>
+        
+       
+		
+        <div class="tassello" style="margin-top: 20px;">
+            <p class="text1">Dedicala alla tua persona del cuore!</p>
+            <input type="text" id="messageInput2" maxlength="40" placeholder="Scrivi la tua dedica">
+            <p class="text2">“Happy Xmas (War Is Over)” - John Lennon & Yoko Ono</p> <!-- Aggiungi il testo desiderato qui -->
+            <button id="submitButton2">INVIA</button>
+			<p class="ingombro">
+        </div>
+		
+		
+	
+		        <div class="tassello" style="margin-top: 20px;">
+            <p class="text1">Dedicala alla tua persona del cuore!</p>
+            <input type="text" id="messageInput3" maxlength="40" placeholder="Scrivi la tua dedica">
+            <p class="text2">“Christmas Lights” - Coldplay</p> <!-- Aggiungi il testo desiderato qui -->
+            <button id="submitButton3">INVIA</button>
+			<p class="ingombro">
+        </div>
+
+        <!-- Aggiungi ulteriori istanze del tuo contenuto secondo necessità -->
+   
+
+    <script src="script2.js"></script>
+</body>
+
+
+</html>
+
+
+
+
+

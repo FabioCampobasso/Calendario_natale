@@ -1,0 +1,84 @@
+<style>
+    body {
+        background-image: url('1.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        margin: -100;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 18px;
+	
+    }
+
+    #animatedText {
+        max-width: 33%;
+        text-align: center;
+        padding: 20px;
+    }
+	 .text2 {
+	    font-family: 'Arial', sans-serif;
+    font-weight: bold;
+	color: #fff
+
+	}
+
+
+.overlay {
+  width: 1080px;
+  height: 255px;
+  background-color: rgba(255, 255, 255, 0.7);
+    filter: grayscale(100%); /* Converti tutto il contenuto in bianco e nero */
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  cursor: pointer;
+  transition: opacity 1s; /* Aggiungi una transizione di 2 secondi per l'opacità */
+}
+
+.forma1 {
+  margin-top: 255px;
+}
+
+.forma2 {
+  margin-top: 510px;
+}
+
+
+
+
+
+.container {
+    position: absolute;
+    left: 230px; /* Specifica la coordinata x desiderata */
+    top: -90px; /* Specifica la coordinata y desiderata */
+    margin-top: 80px; /* Imposta il margine inferiore per creare l'ingombro desiderato */
+}
+
+
+
+    input[type="text"] {
+        border: none;
+        border-radius: 50px;
+        padding: 0px;
+      background-color: #74cdd0;
+        color: #fff;
+        font-size: 16px;
+		
+        outline: none;
+        width: 500px;
+        height: 50px;
+    }
+
+ input[type="text"]::placeholder {
+    color: #bf3630;
+   
+}
+
+
+
+</style>

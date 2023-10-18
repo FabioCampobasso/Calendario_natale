@@ -1,0 +1,18 @@
+
+
+.snowflake {
+    position: absolute;
+    width: -400 px;
+    height: -400px;
+}
+
+@keyframes snowfall {
+    0% {
+        transform: translateY(0) rotate(0deg);
+    }
+    100% {
+        transform: translateY(100vh) rotate(360deg);
+    }
+
+
+}
