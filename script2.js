@@ -75,7 +75,7 @@ function nascondiFormaInBaseAllaData() {
     forma2.classList.remove("overlay");
   }
 
-  if (mese === 10 && giorno >= 17 && giorno <= 25) {
+  if (mese === 10 && giorno >= 18 && giorno <= 25) {
     forma3.classList.remove("overlay");
   }
 }
