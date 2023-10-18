@@ -25,11 +25,10 @@
 
 	}
 	
-		 .text1{
-	   font-family: 'AlternateGotNo3DOT';
-	color: #fff
-
-	}
+.text1 {
+    font-family: 'Oswald-Medium', sans-serif; /* Specifica il font "Oswald-Medium" e usa "sans-serif" come alternativa */
+    color: #fff;
+}
 	
 		#submitButton2 { 
 	background-color: #ffffff; /* Colore di sfondo */
