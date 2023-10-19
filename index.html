@@ -1,61 +1,52 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<link href="https://fonts.googleapis.com/css?family=Oswald:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Oswald:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="styles.css">
     <style>
-	
-	
-	   #submitButton {
-        background-color: #ffffff; /* Colore di sfondo */
-        color: #74cdd0; /* Colore del testo */
-        font-size: 20px; /* Dimensione del font */
-     font-family: 'Arial', sans-serif;
+        #submitButton {
+            background-color: #ffffff;
+            color: #74cdd0;
+            font-size: 20px;
+            font-family: 'Arial', sans-serif;
+            padding: 14px 13px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
 
-        padding: 14px 13px; /* Spaziatura interna */
-        border: none; /* Nessun bordo */
-        border-radius: 50px; /* Angoli arrotondati */
-        cursor: pointer; /* Cambia il cursore al passaggio sopra il pulsante */
-	
-    }
-	
-	    #submitButton2 {
-        background-color: #ffffff; /* Colore di sfondo */
-        color: #74cdd0; /* Colore del testo */
-        font-size: 20px; /* Dimensione del font */
-     font-family: 'Arial', sans-serif;
-position: absolute; 
-right: 0; 
-top: 10;
-        padding: 14px 13px; /* Spaziatura interna */
-        border: none; /* Nessun bordo */
-        border-radius: 50px; /* Angoli arrotondati */
-        cursor: pointer; /* Cambia il cursore al passaggio sopra il pulsante */
-	
-    }
-	
-	    #submitButton3 {
-        background-color: #ffffff; /* Colore di sfondo */
-        color: #74cdd0; /* Colore del testo */
-        font-size: 20px; /* Dimensione del font */
-     font-family: 'Arial', sans-serif;
+        #submitButton2 {
+            background-color: #ffffff;
+            color: #74cdd0;
+            font-size: 20px;
+            font-family: 'Arial', sans-serif;
+            padding: 14px 13px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            position: absolute;
+            right: 0;
+            top: 10;
+        }
 
-        padding: 14px 13px; /* Spaziatura interna */
-        border: none; /* Nessun bordo */
-        border-radius: 50px; /* Angoli arrotondati */
-        cursor: pointer; /* Cambia il cursore al passaggio sopra il pulsante */
-	
-    
-    }
-	
-	
+        #submitButton3 {
+            background-color: #ffffff;
+            color: #74cdd0;
+            font-size: 20px;
+            font-family: 'Arial', sans-serif;
+            padding: 14px 13px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            position: absolute;
+            right: 0;
+            top: 10;
+        }
 
-    /* Stile al passaggio del mouse (hover) */
-    #submitButton:hover {
-        background-color: #ffffff; /* Colore di sfondo al passaggio del mouse */
-    }
-	
-	
         body {
             background-image: url('test.png');
             background-size: contain;
@@ -69,14 +60,7 @@ top: 10;
             font-size: 18px;
         }
 
-
-        /* Stile per la barra di input */
-        .container {
-		
-     
-    
-        
-        }
+        .container {}
 
         input[type="text"] {
             border: none;
@@ -89,78 +73,67 @@ top: 10;
             outline: none;
             width: 690px;
             height: 52px;
-            text-align: center; /* Allinea il testo al centro orizzontalmente */
-            
+            text-align: center;
         }
 
         input[type="text"]::placeholder {
             color: #bf3630;
         }
-		
+
         .text1 {
-            font-size: 50px; /* Dimensioni del testo per la prima frase */
-            text-align: center; /* Allinea il testo al centro orizzontalmente */
-            
-            margin-bottom: 10px; /* Imposta la distanza tra la frase e la barra di ricerca (regola il valore secondo le tue esigenze) */
+            font-size: 50px;
+            text-align: center;
+            margin-bottom: 10px;
             color: #fff;
         }
 
         .text2 {
-            font-size: 27px; /* Dimensioni del testo per la seconda frase */
-            text-align: center; /* Allinea il testo al centro orizzontalmente */
-           font-family: 'Arial', sans-serif;
-font-weight: bold
-position: absolute;
-    top: 300px;
-            color: #ffffff; /* Cambia colore del testo per la seconda frase */	
+            font-size: 27px;
+            text-align: center;
+            font-family: 'Arial', sans-serif;
+            font-weight: bold;
+            position: absolute;
+            top: 300px;
+            color: #ffffff;
         }
-		
-		.ingombro {
-    width: 100px; /* Larghezza desiderata */
-    height: 2.8px; /* Altezza desiderata */
-    //border: 2px solid #000; /* Bordo nero visibile */
-    background-color: transparent; /* Sfondo trasparente */
-    margin-bottom: 2px; /* Ingombro di 100px dal basso */
-}
-		
-		   
+
+        .ingombro {
+            width: 100px;
+            height: 2.8px;
+            background-color: transparent;
+            margin-bottom: 2px;
+        }
     </style>
 </head>
+
 <body>
 
 <div id="forma1" class="overlay" ></div>
-<div id="forma2" class="overlay" ></div>
-<div id="forma3" class="overlay" ></div>
+<div id="forma2" class "overlay" ></div>
+<div id="forma3" class "overlay" ></div>
 
     <div class="container">
-        <!-- Prima istanza del tuo contenuto -->
-      <div class="tassello" style="margin-top: 114px; position: relative;">
-    <input type="text" id="messageInput" maxlength="40" placeholder="Scrivi la tua dedica">
-    <button id="submitButton" style="position: absolute; right: 0; top: 0; font-family: Arial, sans-serif;">INVIA</button>
-</div>
+        <div class="tassello" style="margin-top: 114px; position: relative;">
+            <input type="text" id="messageInput" maxlength="40" placeholder="Scrivi la tua dedica">
+            <button id="submitButton" style="font-family: Arial, sans-serif;">INVIA</button>
+        </div>
 
-       
-		
         <div class="tassello" style="margin-top: 202px;">
             <input type="text" id="messageInput2" maxlength="40" placeholder="Scrivi la tua dedica">
-<button id="submitButton2">INVIA</button>
-        </div>
-		
-		
-	
-		        <div class="tassello" style="margin-top: 204px;">
-            <input type="text" id="messageInput3" maxlength="40" placeholder="Scrivi la tua dedica">
-            <button id="submitButton3" style="position: absolute; right: 0; top: 10; font-family: Arial, sans-serif;">INVIA</button>
+            <button id="submitButton2">INVIA</button>
         </div>
 
-        <!-- Aggiungi ulteriori istanze del tuo contenuto secondo necessità -->
-   
+        <div class="tassello" style="margin-top: 204px;">
+            <input type="text" id="messageInput3" maxlength="40" placeholder="Scrivi la tua dedica">
+            <button id="submitButton3" style="font-family: Arial, sans-serif;">INVIA</button>
+        </div>
+    </div>
 
     <script src="script2.js"></script>
 </body>
 
-
 </html>
+
 
 
 
