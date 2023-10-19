@@ -53,27 +53,27 @@
             height: 100px;
         }
 
-        .button-container {
-            position: absolute;
-            background-color: transparent;
-            left: 60px;
-            top: -255px;
-            scale: 50%;
-            opacity: 0;
-        }
-
         .link-button {
-            font-family: 'AlternateGotNo3DOT';
-            font-size: 20px;
-            color: #508a8c;
-            text-transform: uppercase;
-            text-decoration: none;
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: #fff;
-            border: 2px solid #508a8c;
-            border-radius: 5px;
-        }
+        font-size: 0px;
+        color: #508a8c;
+        text-transform: uppercase;
+        text-decoration: none;
+        display: inline-block;
+        padding: 30px 130px;
+        background-color: transparent;
+        border: 1px solid #508a8c;
+        border-radius: 5px;
+        position: relative; /* Imposta la posizione relativa per consentire il controllo dello z-index */
+        z-index: 1; /* Assicura che il pulsante sia in primo piano */
+    }
+
+    #linkContainer {
+        position: absolute;
+        top: 47.5%; /* Regola la posizione verticale a tuo piacimento */
+        left: 69%; /* Posiziona al centro orizzontalmente */
+        transform: translateX(-50%);
+    }
+
     </style>
 </head>
 
@@ -85,8 +85,8 @@
         <img src="biglietto.png" alt="Biglietto">
         <p id="dedicationMessage"></p>
         <!-- Pulsante "Ascolta ora" -->
-        <div class="button-container">
-            <a href="URL_DEL_LINK_DA_CONDIVIDERE" class="link-button">Visita il Link</a>
+        <div id="linkContainer">
+            <a href="https://open.spotify.com/intl-it/track/2FRnf9qhLbvw8fu4IBXx78?si=cff20d32f2734e93" class="link-button">Visita il Link</a>
         </div>
     </div>
 
