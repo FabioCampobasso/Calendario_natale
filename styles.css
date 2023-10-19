@@ -1,4 +1,8 @@
-        body {
+@media screen and (max-width: 768px) {
+    /* Stili per schermi con larghezza massima di 768px */
+}
+   
+   body {
             background-image: url('test.png');
             background-size: contain;
             background-repeat: no-repeat;
