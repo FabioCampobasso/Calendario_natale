@@ -1,17 +1,15 @@
-<style>
-    body {
-        background-image: url('test.png');
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position: center;
-        margin: -100;
-        height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 18px;
-	
-    }
+        body {
+            background-image: url('test.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: 0 0;
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+        }
 
     #animatedText {
         max-width: 33%;
@@ -31,20 +29,7 @@
 
 	}
 	
-		#submitButton2 { 
-	background-color: #ffffff; /* Colore di sfondo */
-        color: #74cdd0; /* Colore del testo */
-        font-size: 20px; /* Dimensione del font */
-     font-family: 'Arial Black', sans-serif;
-	         padding: 8px 13px; /* Spaziatura interna */
-        border: none; /* Nessun bordo */
-        border-radius: 50px; /* Angoli arrotondati */
-        cursor: pointer; /* Cambia il cursore al passaggio sopra il pulsante */
-        position: absolute; /* Posizionamento assoluto */
-        top: 373px; /* Posizione Y (regola questa posizione) */
-        left: 597px; /* Posizione X (regola questa posizione) */
-		scale: 90%;
-	}
+
 
 
 .overlay {
@@ -68,9 +53,12 @@
   margin-top: 510px;
 }
 
-
-
-
+@font-face {
+    font-family: 'Helvetica Neue Condensed Bold';
+    src: url('path/to/fontHelvetica Neue Condensed Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
 
 .container {
     position: absolute;
