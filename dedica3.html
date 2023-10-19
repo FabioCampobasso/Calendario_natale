@@ -1,61 +1,60 @@
-<!DOCTYPE html>
-<html>
-<head>
-<link href="https://fonts.googleapis.com/css?family=Oswald:wght@700&display=swap" rel="stylesheet">
-    <title>La Tua Dedica</title>
+ <title>La Tua Dedica</title>
     <link rel="stylesheet" type="text/css" href="snow.css">
     <style>
-	@media screen and (max-width: 768px) {
-    /* Stili per schermi con larghezza massima di 768px */
-}
-
         body {
-            background-image: url('biglietto3.png');
-            background-size: contain;
-            background-repeat: no-repeat;
-            background-position: 0 0;
             margin: 0;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            background-color: #ffffff; /* Puoi cambiare questo colore di sfondo se necessario */
+        }
+
+        .container {
+            position: relative;
+            width: 100vw;
             height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
         }
 
-        .container {
-           border: 1px solid #000;
-            position: relative;
+        .container img {
+            max-width: 100%;
+            max-height: 100%;
+            display: block;
+            margin: auto;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
         }
 
-
-#dedicationMessage {
-    font-family: 'Oswald', sans-serif;
-    font-weight: 700; /* Applica il grassetto */
-    font-size: 35px;
-    line-height: 1;
-    text-align: left;
-    color: #508a8c;
-    text-transform: uppercase;
-    position: absolute;
-    left: 70px;
-    top: -185px;
-    white-space: pre-line;
-    overflow-wrap: break-word;
-    width: 320px;
-    height: 100px;
-}
-
-
-
-
+        #dedicationMessage {
+            font-family: 'Oswald', sans-serif;
+            font-weight: 700;
+            font-size: 35px;
+            line-height: 1;
+            text-align: left;
+            color: #508a8c;
+            text-transform: uppercase;
+            position: absolute;
+            left: 57%;  /* Adatta questi valori percentuali in base alle tue esigenze */
+            top: 50%;   /* Adatta questi valori percentuali in base alle tue esigenze */
+            white-space: pre-line;
+            overflow-wrap: break-word;
+            width: 320px;
+            height: 100px;
+        }
 
         .button-container {
-		position: absolute;
-		background-color: transparent;
-           left: 60px; /* Sposta il messaggio 100 pixel a destra */
+            position: absolute;
+            background-color: transparent;
+            left: 60px;
             top: -255px;
-			scale: 50%;
-			opacity: 0;
-			
+            scale: 50%;
+            opacity: 0;
         }
 
         .link-button {
@@ -72,42 +71,41 @@
         }
     </style>
 </head>
+
 <body>
     <div id="snow-container"></div>
     <script src="snow.js"></script>
 
     <div class="container">
+        <img src="biglietto3.png" alt="Biglietto">
         <p id="dedicationMessage"></p>
-
         <!-- Pulsante "Ascolta ora" -->
         <div class="button-container">
             <a href="URL_DEL_LINK_DA_CONDIVIDERE" class="link-button">Visita il Link</a>
         </div>
     </div>
 
-<script>
-    const dedicationMessage = document.getElementById('dedicationMessage');
-    const text = dedicationMessage.textContent;
-
-    // Suddividi il testo in parole
-    const words = text.split(' ');
-
-    // Inizializza due righe di testo
-    let line1 = '';
-    let line2 = '';
-
-    for (let i = 0; i < words.length; i++) {
-        if (i < 3) {
-            line1 += words[i] + ' ';
-        } else {
-            line2 += words[i] + ' ';
-        }
-    }
-
-    dedicationMessage.innerHTML = `${line1.trim()}<br>${line2.trim()}`;
-</script>
-
     <script>
+        const dedicationMessage = document.getElementById('dedicationMessage');
+        const text = dedicationMessage.textContent;
+
+        // Suddividi il testo in parole
+        const words = text.split(' ');
+
+        // Inizializza due righe di testo
+        let line1 = '';
+        let line2 = '';
+
+        for (let i = 0; i < words.length; i++) {
+            if (i < 3) {
+                line1 += words[i] + ' ';
+            } else {
+                line2 += words[i] + ' ';
+            }
+        }
+
+        dedicationMessage.innerHTML = `${line1.trim()}<br>${line2.trim()}`;
+
         // Ottieni il messaggio dalla query string dell'URL
         var queryString = window.location.search;
         var urlParams = new URLSearchParams(queryString);
@@ -118,5 +116,5 @@
         dedicationMessageElement.textContent = message.toUpperCase();
     </script>
 </body>
-</html>
 
+</html>

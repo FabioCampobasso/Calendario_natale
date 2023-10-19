@@ -1,58 +1,46 @@
+// snow.js
+
+// Array di nomi delle immagini dei fiocchi
+const snowflakeImages = ['fiocco1.png', 'fiocco2.png', 'fiocco3.png'];
+
+// Funzione per creare un fiocco di neve casuale con un'immagine
 function createSnowflake() {
-    const snowflake = document.createElement('img');
-    const randomValue = Math.random();
-    let snowflakeImage;
-    if (randomValue < 0.33) {
-        snowflakeImage = 'fiocco.png';
-    } else if (randomValue < 0.66) {
-        snowflakeImage = 'fiocco2.png';
-    } else {
-        snowflakeImage = 'fiocco3.png';
-    }
-    
-    snowflake.src = snowflakeImage;
+    const snowflake = document.createElement('div');
     snowflake.className = 'snowflake';
-    document.getElementById('snow-container').appendChild(snowflake);
+    
+    // Scegli casualmente un'immagine da snowflakeImages
+    const randomImage = snowflakeImages[Math.floor(Math.random() * snowflakeImages.length)];
+    snowflake.style.backgroundImage = `url(${randomImage})`;
 
-    const startX = Math.random() * (window.innerWidth * 0.5); // Larghezza massima del 50%
-    const startY = -230; // Posizione iniziale sopra la finestra
-    const endX = Math.random() * (window.innerWidth * 0.5); // Larghezza massima del 50%
-    const duration = Math.random() * 10 + 5;
-
-    // Scala variabile tra il 50% e il 300%
-  let scale;
-if (randomValue < 0.5) {
-    scale = (Math.random() * 250 + 50) / 100; // Scala tra il 50% e il 300% quando randomValue è inferiore a 0.5
-} else {
-    scale = (Math.random() * 250 + 50) / 100; // Scala tra il 50% e il 300% quando randomValue è maggiore o uguale a 0.5
+    // Imposta una posizione casuale all'interno dell'elemento "snow-container"
+    const container = document.getElementById('snow-container');
+    const maxX = container.offsetWidth;
+    const maxY = container.offsetHeight;
+    const randomX = Math.random() * maxX;
+    const randomY = Math.random() * maxY;
+    
+    // Imposta una dimensione casuale per il fiocco di neve
+    const size = Math.random() * 20 + 10; // Imposta la dimensione desiderata
+    snowflake.style.width = `${size}px`;
+    snowflake.style.height = `${size}px`;
+    
+    // Imposta una transizione per un movimento fluido
+    const duration = Math.random() * 4 + 4; // Imposta la durata desiderata
+    snowflake.style.animation = `fall ${duration}s linear infinite`;
+    
+    // Imposta la posizione iniziale
+    snowflake.style.left = `${randomX}px`;
+    snowflake.style.top = `${randomY}px`;
+    
+    container.appendChild(snowflake);
 }
 
-    snowflake.style.left = startX + 'px';
-    snowflake.style.top = startY + 'px'; // Imposta la posizione iniziale sopra la finestra
-    snowflake.style.animation = `snowfall ${duration}s linear`;
-    snowflake.style.transform = `scale(${scale})`; // Imposta la scala
-
-    // Rimuovi il fiocco di neve quando raggiunge il fondo
-    snowflake.addEventListener('animationiteration', function () {
-        document.getElementById('snow-container').removeChild(snowflake);
-    });
+// Funzione per creare una serie di fiocchi di neve
+function createSnowfall() {
+    for (let i = 0; i < 50; i++) { // Imposta il numero desiderato di fiocchi di neve
+        createSnowflake();
+    }
 }
 
-
-// Funzione per generare un fiocco di neve ogni 1/4 di secondo
-function generateSnowflake() {
-    createSnowflake();
-}
-
-// Aggiungi un gestore di eventi clic per generare un fiocco di neve quando si fa clic sulla finestra
-window.addEventListener('click', function () {
-    createSnowflake();
-});
-
-// Genera fiocchi di neve iniziali
-for (let i = 0; i < 15; i++) { // Ridotto il numero di fiocchi iniziali
-    createSnowflake();
-}
-
-// Genera un fiocco di neve ogni 1/4 di secondo
-setInterval(generateSnowflake, 500);
+// Esegui la creazione della nevicata quando il documento è pronto
+document.addEventListener('DOMContentLoaded', createSnowfall);
