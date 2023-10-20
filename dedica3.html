@@ -53,8 +53,19 @@
             height: 100px;
         }
 
-
-
+        #linkButton {
+            background-color: #508a8c;
+            color: #ffffff;
+            font-size: 20px;
+            font-family: 'Oswald', sans-serif;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            position: absolute;
+            left: 57%;
+            top: 65%; /* Posiziona il pulsante sotto il messaggio */
+        }
     </style>
 </head>
 
@@ -65,8 +76,8 @@
     <div class="container">
         <img src="biglietto3.png" alt="Biglietto">
         <p id="dedicationMessage"></p>
-        <!-- Pulsante "Ascolta ora" -->
-
+        <!-- Aggiungi il pulsante per il link -->
+        <a id="linkButton" href="https://open.spotify.com/intl-it/track/0B9l9hT20tpjWVmcevypDc?si=ca93a347ece54c70" target="_blank">Vai al Link</a>
     </div>
 
     <script>
@@ -102,3 +113,4 @@
 </body>
 
 </html>
+
