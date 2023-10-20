@@ -110,24 +110,35 @@
         <p id="dedicationMessage"></p>
         <a id="externalLink" href="https://open.spotify.com/intl-it/track/0asgUXDrY7oWmFSllqoTo8?si=c86ee89f4f8640e2"></a>
     </div>
-	<button id="captureButton">Cattura immagine</button>
+<button id="captureButton" class="capture-exclude">Cattura immagine</button>
 <script src="html2canvas.min.js"></script>
+
+
 <script>
-  document.getElementById('captureButton').addEventListener('click', function() {
-    // Crea un'immagine della pagina
-    html2canvas(document.body).then(function(canvas) {
-      // Converti il canvas in un'immagine
-      var image = canvas.toDataURL('image/png');
-      
-      // Crea un elemento 'a' per scaricare l'immagine
-      var downloadLink = document.createElement('a');
-      downloadLink.href = image;
-      downloadLink.download = 'screenshot.png';
-      
-      // Simula un clic sul link per avviare il download
-      downloadLink.click();
-    });
+document.getElementById('captureButton').addEventListener('click', function() {
+  // Disabilita il pulsante prima di catturare l'immagine
+  this.disabled = true;
+
+  // Crea un'immagine della pagina, escludendo gli elementi con la classe "capture-exclude"
+  html2canvas(document.body, {
+    ignoreElements: element => element.classList.contains('capture-exclude')
+  }).then(function(canvas) {
+    // Converti il canvas in un'immagine
+    var image = canvas.toDataURL('image/png');
+
+    // Crea un elemento 'a' per scaricare l'immagine
+    var downloadLink = document.createElement('a');
+    downloadLink.href = image;
+    downloadLink.download = 'screenshot.png';
+
+    // Simula un clic sul link per avviare il download
+    downloadLink.click();
+
+    // Riabilita il pulsante dopo la cattura
+    document.getElementById('captureButton').disabled = false;
   });
+});
+
 </script>
     
     <script>
