@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Crea una GIF animata</title>
+    <script src="https://cdn.rawgit.com/jnordberg/gif.js/0.2.0/dist/gif.js"></script>
+</head>
+<body>
+    <div id="customizationArea">
+        <img src="immagine_personalizzata.jpg" id="customImage" alt="Immagine personalizzata">
+        <button onclick="creaEcondividiGIF()">Crea e condividi GIF</button>
+    </div>
+    <script>
+        function catturaEcreaGIF() {
+            const customizationArea = document.getElementById('customizationArea');
+            const gif = new GIF({ workers: 2, quality: 10, width: 320, height: 240 });
+
+            for (let i = 0; i < 15; i++) {
+                // Cattura un'istantanea dell'area personalizzata
+                html2canvas(customizationArea).then(function(canvas) {
+                    gif.addFrame(canvas, { delay: 100 }); // Aggiungi l'istantanea alla GIF con un intervallo di 100ms
+                });
+            }
+
+            gif.on('finished', function(blob) {
+                // Crea un link per scaricare la GIF
+                const downloadLink = document.createElement('a');
+                downloadLink.href = URL.createObjectURL(blob);
+                downloadLink.download = 'animazione.gif';
+                downloadLink.click();
+            });
+
+            gif.render(); // Crea la GIF animata
+        }
+
+        function condividiSuInstagram() {
+            // Carica la GIF sul dispositivo dell'utente
+            const downloadLink = document.createElement('a');
+            downloadLink.href = URL.createObjectURL(gif.blob);
+            downloadLink.download = 'animazione.gif';
+            downloadLink.click();
+
+            // Apri l'app di Instagram
+            window.open('https://www.instagram.com/');
+        }
+
+        function creaEcondividiGIF() {
+            // Crea la GIF animata
+            catturaEcreaGIF();
+
+            // Condividi la GIF su Instagram
+            condividiSuInstagram();
+        }
+    </script>
+</body>
+</html>

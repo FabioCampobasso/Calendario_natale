@@ -1,11 +1,38 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <link href="https://fonts.googleapis.com/css?family=Oswald:wght@700&display=swap" rel="stylesheet">
     <title>La Tua Dedica</title>
     <link rel="stylesheet" type="text/css" href="snow.css">
+  
     <style>
+
+/*Bottone spotify*/
+#externalLink {
+    /* Aggiungi stili specifici per il pulsante */
+    background-color: transparent;
+    border: 0px solid #000;
+    color: #000;
+    padding: 30px 120px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    position: absolute;
+    z-index: 1; /* Posiziona il pulsante sopra tutto il resto */
+
+    /* Posiziona rispetto a biglietto3.png */
+    left: 57%; /* Regola questo valore in base alle tue esigenze */
+    top: 47.5%;  /* Regola questo valore in base alle tue esigenze */
+}
+
+        
+        #snow-container {
+            /* Aggiungi questa proprietà per disabilitare gli eventi del mouse sulla nevicata */
+            pointer-events: none;
+        }
+        
         body {
             margin: 0;
             height: 100vh;
@@ -13,7 +40,7 @@
             align-items: center;
             justify-content: center;
             font-size: 18px;
-            background-color: #ffffff; /* Puoi cambiare questo colore di sfondo se necessario */
+            background-color: #ffffff;
         }
 
         .container {
@@ -45,38 +72,37 @@
             color: #508a8c;
             text-transform: uppercase;
             position: absolute;
-            left: 57%;  /* Adatta questi valori percentuali in base alle tue esigenze */
-            top: 50%;   /* Adatta questi valori percentuali in base alle tue esigenze */
+            left: 57%;
+            top: 50%;
             white-space: pre-line;
             overflow-wrap: break-word;
             width: 320px;
             height: 100px;
         }
-
-
+        
     </style>
 </head>
-
 <body>
     <div id="snow-container"></div>
     <script src="snow.js"></script>
-
+    
     <div class="container">
         <img src="biglietto.png" alt="Biglietto">
         <p id="dedicationMessage"></p>
-
-
+        <a id="externalLink" href="https://open.spotify.com/intl-it/track/2FRnf9qhLbvw8fu4IBXx78?si=981802abe7124910"></a>
+    </div>
+    
     <script>
         const dedicationMessage = document.getElementById('dedicationMessage');
         const text = dedicationMessage.textContent;
-
+        
         // Suddividi il testo in parole
         const words = text.split(' ');
-
+        
         // Inizializza due righe di testo
         let line1 = '';
         let line2 = '';
-
+        
         for (let i = 0; i < words.length; i++) {
             if (i < 3) {
                 line1 += words[i] + ' ';
@@ -84,19 +110,18 @@
                 line2 += words[i] + ' ';
             }
         }
-
+        
         dedicationMessage.innerHTML = `${line1.trim()}<br>${line2.trim()}`;
-
+        
         // Ottieni il messaggio dalla query string dell'URL
         var queryString = window.location.search;
         var urlParams = new URLSearchParams(queryString);
         var message = urlParams.get("message");
-
+        
         // Inserisci il messaggio nella pagina in maiuscolo
         var dedicationMessageElement = document.getElementById("dedicationMessage");
         dedicationMessageElement.textContent = message.toUpperCase();
     </script>
 </body>
-
 </html>
 

@@ -22,6 +22,16 @@
     100% {
         transform: translateY(100vh) rotate(360deg);
     }
-
-
 }
+
+/* Stile per il video e la miniatura */
+video {
+    width: 320px;
+    height: 240px;
+}
+
+img#fotoThumbnail {
+    width: 320px;
+    height: 240px;
+}
+
