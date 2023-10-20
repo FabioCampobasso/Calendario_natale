@@ -6,6 +6,20 @@
     <link rel="stylesheet" type="text/css" href="snow.css">
   
     <style>
+	
+	#captureAndDownloadButton {
+ background-color: transparent;
+    border: 0px solid #000;
+    color: #000;
+    padding: 30px 120px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    position: absolute;
+    z-index: 1; /* Posiziona il pulsante sopra tutto il resto */;
+}
 
 /*Bottone spotify*/
 #externalLink {
@@ -90,7 +104,10 @@
         <img src="biglietto.png" alt="Biglietto">
         <p id="dedicationMessage"></p>
         <a id="externalLink" href="https://open.spotify.com/intl-it/track/2FRnf9qhLbvw8fu4IBXx78?si=981802abe7124910"></a>
+		<div id="elementToCapture">
+		<button id="captureAndDownloadButton">Cattura e Scarica Immagine</button>
     </div>
+	<script src="download.js"></script>
     
     <script>
         const dedicationMessage = document.getElementById('dedicationMessage');
