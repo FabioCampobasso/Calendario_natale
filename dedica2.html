@@ -164,59 +164,46 @@
         
                // -------------------------------------------------------------------------------------------------------------
 			   
-        function captureImage() {
-            // Utilizza l'API MediaDevices per accedere alla fotocamera
-            if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-                const constraints = { video: true };
-                const videoElement = document.createElement('video');
+       // Funzione per catturare un'immagine dalla fotocamera
+function captureImage() {
+    // Utilizza l'API MediaDevices per accedere alla fotocamera
+    if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+        const constraints = { video: true };
+        const videoElement = document.createElement('video'); // Crea un elemento video
 
-                navigator.mediaDevices.getUserMedia(constraints)
-                    .then(function (stream) {
-                        videoElement.srcObject = stream;
-                        videoElement.play();
-                    })
-                    .catch(function (error) {
-                        console.error('Errore nell\'accesso alla fotocamera: ', error);
-                    });
+        navigator.mediaDevices.getUserMedia(constraints)
+            .then(function (stream) {
+                // Visualizza il flusso video nell'elemento video
+                videoElement.srcObject = stream;
+                videoElement.play();
+            })
+            .catch(function (error) {
+                console.error('Errore nell\'accesso alla fotocamera: ', error);
+            });
 
-                // Cattura un frame del video come immagine
-                videoElement.addEventListener('click', function () {
-                    const canvas = document.createElement('canvas');
-                    canvas.width = videoElement.videoWidth;
-                    canvas.height = videoElement.videoHeight;
-                    canvas.getContext('2d').drawImage(videoElement, 0, 0, canvas.width, canvas.height);
-                    const image = new Image();
-                    image.src = canvas.toDataURL('image/png');
+        // Cattura un frame del video come immagine
+        videoElement.addEventListener('click', function () {
+            const canvas = document.createElement('canvas');
+            canvas.width = videoElement.videoWidth;
+            canvas.height = videoElement.videoHeight;
+            canvas.getContext('2d').drawImage(videoElement, 0, 0, canvas.width, canvas.height);
 
-                    // Visualizza l'immagine catturata nell'elemento "imagePreview"
-                    const imagePreview = document.getElementById('imagePreview');
-                    imagePreview.innerHTML = ''; // Rimuovi l'anteprima predefinita
-                    imagePreview.appendChild(image);
-
-                    // Ferma lo stream video
-                    stream.getTracks().forEach(track => track.stop());
-                });
-            } else {
-                alert('Il tuo browser non supporta l\'accesso alla fotocamera.');
-            }
-        }
-
-        // Funzione per caricare un'immagine da un file
-        function loadImage(input) {
-            const imageContainer = document.getElementById('imageContainer');
+            // Crea un elemento img per visualizzare l'immagine catturata
             const image = document.createElement('img');
-            image.src = URL.createObjectURL(input.files[0]);
-            imageContainer.innerHTML = ''; // Rimuovi eventuali immagini precedenti
-            imageContainer.appendChild(image);
+            image.src = canvas.toDataURL('image/png');
 
-            // Accedi all'elemento dell'immagine
-            const imageElement = imageContainer.getElementsByTagName('img')[0];
+            // Visualizza l'immagine catturata nell'elemento "imagePreview"
+            const imagePreview = document.getElementById('imagePreview');
+            imagePreview.innerHTML = ''; // Rimuovi l'anteprima predefinita
+            imagePreview.appendChild(image);
 
-            // Modifica lo stile dell'immagine
-            if (imageElement) {
-                // Puoi applicare qui eventuali stili CSS all'immagine caricata
-            }
-        }
+            // Ferma lo stream video
+            stream.getTracks().forEach(track => track.stop());
+        });
+    } else {
+        alert('Il tuo browser non supporta l\'accesso alla fotocamera.');
+    }
+}
     </script>
 </body>
 </html>
