@@ -6,6 +6,66 @@
     <link rel="stylesheet" type="text/css" href="snow.css">
   
     <style>
+	#imagePreview {
+    width: 250px; /* Imposta la larghezza predefinita */
+    height: 300px; /* Imposta l'altezza predefinita */
+    background: #f0f0f0; /* Imposta un colore di sfondo grigio */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    color: #666; /* Imposta il colore del testo grigio */
+    border: 2px dashed #ccc; /* Aggiunge un bordo tratteggiato grigio */
+	            position: absolute;
+            top: 30%;
+            left: 44%;
+}
+
+
+	        #imageContainer {
+            max-width: 100%;
+            max-height: 100%;
+            display: block;
+            margin: auto;
+            position: absolute;
+            top: 60%;
+            left: 64%;
+            transform: translate(-50%, -50%);
+        }
+
+        #imageContainer img {
+            max-width: 100px;
+            max-height: 100px;
+            display: block;
+            margin: auto;
+            position: absolute;
+            top: 20%;
+            left: 20%;
+            transform: translate(-50%, -50%);
+        }
+
+        #imageInput {
+            /* Nascondi il pulsante predefinito */
+            display: none;
+        }
+
+        #customFileButton {
+            /* Stile personalizzato per il pulsante */
+            background-color: #508a8c;
+            font-family: 'Oswald', sans-serif;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+
+        #customFileButton:hover {
+            background-color: #00506b;
+        }
+		
+		
         /* Bottone spotify */
         #externalLink {
             /* Aggiungi stili specifici per il pulsante */
@@ -77,48 +137,6 @@
             height: 100px;
         }
 
-        #imageContainer {
-            max-width: 100%;
-            max-height: 100%;
-            display: block;
-            margin: auto;
-            position: absolute;
-            top: 60%;
-            left: 64%;
-            transform: translate(-50%, -50%);
-        }
-
-        #imageContainer img {
-            max-width: 100px;
-            max-height: 100px;
-            display: block;
-            margin: auto;
-            position: absolute;
-            top: 20%;
-            left: 20%;
-            transform: translate(-50%, -50%);
-        }
-
-        #imageInput {
-            /* Nascondi il pulsante predefinito */
-            display: none;
-        }
-
-        #customFileButton {
-            /* Stile personalizzato per il pulsante */
-            background-color: #508a8c;
-            font-family: 'Oswald', sans-serif;
-            color: #fff;
-            padding: 10px 20px;
-            border: none;
-            cursor: pointer;
-            font-size: 16px;
-            border-radius: 5px;
-        }
-
-        #customFileButton:hover {
-            background-color: #00506b;
-        }
     </style>
 </head>
 <body>
@@ -135,11 +153,12 @@
         <label for="imageInput" id="customFileButton" onclick="captureImage()">SCATTA UNA FOTO</label>
         <input type="file" accept="image/*" id="imageInput" onchange="loadImage(this)">
     </div>
-    
+    <div id="imagePreview"></div>
     <div id="uploadedImage"></div>
 
     <script>
         const dedicationMessage = document.getElementById
+
         const dedicationMessage = document.getElementById('dedicationMessage');
         const uploadedImageContainer = document.getElementById('uploadedImage');
         
