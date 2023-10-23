@@ -6,33 +6,30 @@
     <link rel="stylesheet" type="text/css" href="snow.css">
   
     <style>
+        /* Bottone spotify */
+        #externalLink {
+            /* Aggiungi stili specifici per il pulsante */
+            background-color: transparent;
+            border: 0px solid #000;
+            color: #000;
+            padding: 30px 120px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            cursor: pointer;
+            position: absolute;
+            z-index: 1; /* Posiziona il pulsante sopra tutto il resto */
+            /* Posiziona rispetto a biglietto3.png */
+            left: 57%; /* Regola questo valore in base alle tue esigenze */
+            top: 47.5%;  /* Regola questo valore in base alle tue esigenze */
+        }
 
-/*Bottone spotify*/
-#externalLink {
-    /* Aggiungi stili specifici per il pulsante */
-    background-color: transparent;
-    border: 0px solid #000;
-    color: #000;
-    padding: 30px 120px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    cursor: pointer;
-    position: absolute;
-    z-index: 1; /* Posiziona il pulsante sopra tutto il resto */
-
-    /* Posiziona rispetto a biglietto3.png */
-    left: 57%; /* Regola questo valore in base alle tue esigenze */
-    top: 47.5%;  /* Regola questo valore in base alle tue esigenze */
-}
-
-        
         #snow-container {
             /* Aggiungi questa proprietà per disabilitare gli eventi del mouse sulla nevicata */
             pointer-events: none;
         }
-        
+
         body {
             margin: 0;
             height: 100vh;
@@ -79,7 +76,49 @@
             width: 320px;
             height: 100px;
         }
-        
+
+        #imageContainer {
+            max-width: 100%;
+            max-height: 100%;
+            display: block;
+            margin: auto;
+            position: absolute;
+            top: 60%;
+            left: 64%;
+            transform: translate(-50%, -50%);
+        }
+
+        #imageContainer img {
+            max-width: 100px;
+            max-height: 100px;
+            display: block;
+            margin: auto;
+            position: absolute;
+            top: 20%;
+            left: 20%;
+            transform: translate(-50%, -50%);
+        }
+
+        #imageInput {
+            /* Nascondi il pulsante predefinito */
+            display: none;
+        }
+
+        #customFileButton {
+            /* Stile personalizzato per il pulsante */
+            background-color: #508a8c;
+            font-family: 'Oswald', sans-serif;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+
+        #customFileButton:hover {
+            background-color: #00506b;
+        }
     </style>
 </head>
 <body>
@@ -91,37 +130,78 @@
         <p id="dedicationMessage"></p>
         <a id="externalLink" href="https://open.spotify.com/intl-it/track/0asgUXDrY7oWmFSllqoTo8?si=c86ee89f4f8640e2"></a>
     </div>
+
+    <div id="imageContainer">
+        <label for="imageInput" id="customFileButton" onclick="captureImage()">SCATTA UNA FOTO</label>
+        <input type="file" accept="image/*" id="imageInput" onchange="loadImage(this)">
+    </div>
     
+    <div id="uploadedImage"></div>
+
     <script>
+        const dedicationMessage = document.getElementById
         const dedicationMessage = document.getElementById('dedicationMessage');
-        const text = dedicationMessage.textContent;
+        const uploadedImageContainer = document.getElementById('uploadedImage');
         
-        // Suddividi il testo in parole
-        const words = text.split(' ');
-        
-        // Inizializza due righe di testo
-        let line1 = '';
-        let line2 = '';
-        
-        for (let i = 0; i < words.length; i++) {
-            if (i < 3) {
-                line1 += words[i] + ' ';
+        // Funzione per scattare una foto
+        function captureImage() {
+            // Usa il MediaDevices API per accedere alla fotocamera
+            if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+                const constraints = { video: true };
+                const videoElement = document.createElement('video');
+
+                navigator.mediaDevices.getUserMedia(constraints)
+                    .then(function (stream) {
+                        // Mostra il video in un elemento video
+                        videoElement.srcObject = stream;
+                        videoElement.play();
+                    })
+                    .catch(function (error) {
+                        console.error('Errore nell\'accesso alla fotocamera: ', error);
+                    });
+                
+                // Cattura un frame del video come immagine
+                videoElement.addEventListener('click', function () {
+                    const canvas = document.createElement('canvas');
+                    canvas.width = videoElement.videoWidth;
+                    canvas.height = videoElement.videoHeight;
+                    canvas.getContext('2d').drawImage(videoElement, 0, 0, canvas.width, canvas.height);
+                    const image = new Image();
+                    image.src = canvas.toDataURL('image/png');
+
+                    // Visualizza l'immagine catturata nell'HTML
+                    uploadedImageContainer.innerHTML = '';
+                    uploadedImageContainer.appendChild(image);
+
+                    // Stoppa lo stream video
+                    stream.getTracks().forEach(track => track.stop());
+                });
             } else {
-                line2 += words[i] + ' ';
+                alert('Il tuo browser non supporta l\'accesso alla fotocamera.');
             }
         }
-        
-        dedicationMessage.innerHTML = `${line1.trim()}<br>${line2.trim()}`;
-        
-        // Ottieni il messaggio dalla query string dell'URL
-        var queryString = window.location.search;
-        var urlParams = new URLSearchParams(queryString);
-        var message = urlParams.get("message");
-        
-        // Inserisci il messaggio nella pagina in maiuscolo
-        var dedicationMessageElement = document.getElementById("dedicationMessage");
-        dedicationMessageElement.textContent = message.toUpperCase();
+
+        // Funzione per caricare un'immagine dal file input
+        function loadImage(input) {
+            const imageContainer = document.getElementById('imageContainer');
+            const image = document.createElement('img');
+            image.src = URL.createObjectURL(input.files[0]);
+            imageContainer.innerHTML = ''; // Rimuovi eventuali immagini precedenti
+            imageContainer.appendChild(image);
+
+            // Accedi all'elemento dell'immagine
+            const imageElement = imageContainer.getElementsByTagName('img')[0];
+
+            // Modifica il CSS dell'immagine
+            if (imageElement) {
+                imageElement.style.width = 'contain'; // Imposta la larghezza desiderata
+                imageElement.style.height = 'contain'; // Imposta l'altezza desiderata
+                imageElement.style.transform = 'rotate(-30deg)'; // Ruota l'immagine di 30 gradi (puoi cambiare il valore a tuo piacimento)
+                // Altre modifiche CSS
+            }
+        }
     </script>
 </body>
 </html>
+
 
