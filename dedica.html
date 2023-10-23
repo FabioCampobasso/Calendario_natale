@@ -6,25 +6,9 @@
     <link rel="stylesheet" type="text/css" href="snow.css">
   
     <style>
-	/*Bottone cattura*/
-#captureButton {
-    /* Aggiungi stili specifici per il pulsante */
-    background-color: white;
-    border: 0px solid #000;
-    color: #000;
-    padding: 30px 120px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 25px;
-    cursor: pointer;
-    position: absolute;
-    z-index: 1; /* Posiziona il pulsante sopra tutto il resto */
-
-    /* Posiziona rispetto a biglietto3.png */
-    left: 30%; /* Regola questo valore in base alle tue esigenze */
-    top: 60%;  /* Regola questo valore in base alle tue esigenze */
-}
+	#photo-container {
+            display: none; /* Nascondi il container della foto inizialmente */
+        }
 
 /*Bottone spotify*/
 #externalLink {
@@ -108,38 +92,15 @@
     <div class="container">
         <img src="biglietto.png" alt="Biglietto">
         <p id="dedicationMessage"></p>
-        <a id="externalLink" href="https://open.spotify.com/intl-it/track/0asgUXDrY7oWmFSllqoTo8?si=c86ee89f4f8640e2"></a>
+        <a id="externalLink" href="https://open.spotify.com/intl-it/track/5qPClsnSEQEN2aaCybyhuD?si=0bf74883858e445a"></a>
     </div>
-<button id="captureButton">Cattura immagine</button>
-<script src="html2canvas.min.js"></script>
-
-
-<script>
-document.getElementById('captureButton').addEventListener('click', function() {
-  // Disabilita il pulsante prima di catturare l'immagine
-  this.disabled = true;
-
-  // Crea un'immagine della pagina, escludendo gli elementi con la classe "capture-exclude"
-  html2canvas(document.body, {
-    ignoreElements: element => element.classList.contains('capture-exclude')
-  }).then(function(canvas) {
-    // Converti il canvas in un'immagine
-    var image = canvas.toDataURL('image/png');
-
-    // Crea un elemento 'a' per scaricare l'immagine
-    var downloadLink = document.createElement('a');
-    downloadLink.href = image;
-    downloadLink.download = 'screenshot.png';
-
-    // Simula un clic sul link per avviare il download
-    downloadLink.click();
-
-    // Riabilita il pulsante dopo la cattura
-    document.getElementById('captureButton').disabled = false;
-  });
-});
-
-</script>
+	
+	    <!-- Aggiungi un pulsante per scattare una foto -->
+    <button id="take-photo-button">Scatta una foto</button>
+    
+    <!-- Aggiungi un container per visualizzare la foto -->
+    <div id="photo-container">
+        <img id="photo" alt="Foto catturata">
     
     <script>
         const dedicationMessage = document.getElementById('dedicationMessage');
@@ -170,7 +131,42 @@ document.getElementById('captureButton').addEventListener('click', function() {
         // Inserisci il messaggio nella pagina in maiuscolo
         var dedicationMessageElement = document.getElementById("dedicationMessage");
         dedicationMessageElement.textContent = message.toUpperCase();
+		
+		
+		
+		
+		 // Aggiungi un gestore di eventi per il pulsante "Scatta una foto"
+        const takePhotoButton = document.getElementById('take-photo-button');
+        const photoContainer = document.getElementById('photo-container');
+        const photo = document.getElementById('photo');
+        
+        takePhotoButton.addEventListener('click', () => {
+            // Richiedi l'autorizzazione all'uso della fotocamera
+            navigator.mediaDevices.getUserMedia({ video: true })
+                .then(function (stream) {
+                    // Mostra il video in un elemento HTML video
+                    const video = document.createElement('video');
+                    video.srcObject = stream;
+                    video.play();
+
+                    // Cattura un frame del video come foto
+                    const canvas = document.createElement('canvas');
+                    canvas.width = video.videoWidth;
+                    canvas.height = video.videoHeight;
+                    canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
+
+                    // Ferma il flusso video
+                    stream.getTracks().forEach(track => track.stop());
+
+                    // Visualizza la foto nel container
+                    photo.src = canvas.toDataURL('image/png');
+                    photoContainer.style.display = 'block';
+                })
+                .catch(function (error) {
+                    console.error('Impossibile accedere alla fotocamera:', error);
+                });
+        });
+		
     </script>
 </body>
 </html>
-
