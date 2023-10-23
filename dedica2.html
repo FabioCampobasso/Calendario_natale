@@ -15,7 +15,7 @@
     justify-content: center;
     font-size: 24px;
     color: #666; /* Imposta il colore del testo grigio */
-    border: 2px dashed #ccc; /* Aggiunge un bordo tratteggiato grigio */
+    
 	            position: absolute;
             top: 30%;
             left: 44%;
@@ -162,23 +162,23 @@
         const dedicationMessage = document.getElementById('dedicationMessage');
         const uploadedImageContainer = document.getElementById('uploadedImage');
         
-        // Funzione per scattare una foto
+               // -------------------------------------------------------------------------------------------------------------
+			   
         function captureImage() {
-            // Usa il MediaDevices API per accedere alla fotocamera
+            // Utilizza l'API MediaDevices per accedere alla fotocamera
             if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
                 const constraints = { video: true };
                 const videoElement = document.createElement('video');
 
                 navigator.mediaDevices.getUserMedia(constraints)
                     .then(function (stream) {
-                        // Mostra il video in un elemento video
                         videoElement.srcObject = stream;
                         videoElement.play();
                     })
                     .catch(function (error) {
                         console.error('Errore nell\'accesso alla fotocamera: ', error);
                     });
-                
+
                 // Cattura un frame del video come immagine
                 videoElement.addEventListener('click', function () {
                     const canvas = document.createElement('canvas');
@@ -188,11 +188,12 @@
                     const image = new Image();
                     image.src = canvas.toDataURL('image/png');
 
-                    // Visualizza l'immagine catturata nell'HTML
-                    uploadedImageContainer.innerHTML = '';
-                    uploadedImageContainer.appendChild(image);
+                    // Visualizza l'immagine catturata nell'elemento "imagePreview"
+                    const imagePreview = document.getElementById('imagePreview');
+                    imagePreview.innerHTML = ''; // Rimuovi l'anteprima predefinita
+                    imagePreview.appendChild(image);
 
-                    // Stoppa lo stream video
+                    // Ferma lo stream video
                     stream.getTracks().forEach(track => track.stop());
                 });
             } else {
@@ -200,7 +201,7 @@
             }
         }
 
-        // Funzione per caricare un'immagine dal file input
+        // Funzione per caricare un'immagine da un file
         function loadImage(input) {
             const imageContainer = document.getElementById('imageContainer');
             const image = document.createElement('img');
@@ -211,16 +212,14 @@
             // Accedi all'elemento dell'immagine
             const imageElement = imageContainer.getElementsByTagName('img')[0];
 
-            // Modifica il CSS dell'immagine
+            // Modifica lo stile dell'immagine
             if (imageElement) {
-                imageElement.style.width = 'contain'; // Imposta la larghezza desiderata
-                imageElement.style.height = 'contain'; // Imposta l'altezza desiderata
-                imageElement.style.transform = 'rotate(-30deg)'; // Ruota l'immagine di 30 gradi (puoi cambiare il valore a tuo piacimento)
-                // Altre modifiche CSS
+                // Puoi applicare qui eventuali stili CSS all'immagine caricata
             }
         }
     </script>
 </body>
 </html>
+
 
 
