@@ -24,6 +24,42 @@
     }
 }
 
+#imageInput {
+    background-color: #008CBA; /* Cambia il colore di sfondo */
+    color: #fff; /* Cambia il colore del testo */
+    padding: 10px 20px; /* Modifica il padding per regolare le dimensioni del pulsante */
+    border: none; /* Rimuovi il bordo */
+    cursor: pointer;
+    border-radius: 5px; /* Aggiungi bordi arrotondati */
+    font-weight: bold;
+}
+
+#imageContainer img {
+    max-width: 150px; /* Modifica la larghezza massima dell'immagine */
+    max-height: 150px; /* Modifica l'altezza massima dell'immagine */
+    border: 1px solid #ddd; /* Aggiungi un sottile bordo grigio all'immagine */
+    border-radius: 5px; /* Aggiungi bordi arrotondati all'immagine */
+}
+
+#uploadButton {
+    background-color: #008CBA; /* Cambia il colore di sfondo */
+    color: #fff; /* Cambia il colore del testo */
+    padding: 10px 20px; /* Modifica il padding per regolare le dimensioni del pulsante */
+    border: none; /* Rimuovi il bordo */
+    cursor: pointer;
+    border-radius: 5px; /* Aggiungi bordi arrotondati */
+    font-weight: bold;
+}
 
 
 
+
+#openImageInput{
+    background-color: #008CBA; /* Cambia il colore di sfondo */
+    color: #fff; /* Cambia il colore del testo */
+    padding: 10px 20px; /* Modifica il padding per regolare le dimensioni del pulsante */
+    border: none; /* Rimuovi il bordo */
+    cursor: pointer;
+    border-radius: 5px; /* Aggiungi bordi arrotondati */
+    font-weight: bold;
+}
