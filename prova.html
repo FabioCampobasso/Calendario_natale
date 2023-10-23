@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Scatta una Foto</title>
+</head>
+<body>
+    <h1>Scatta una Foto</h1>
+    <button id="captureButton">Scatta Foto</button>
+    <video id="videoElement" autoplay></video>
+    <canvas id="canvasElement" style="display: none;"></canvas>
+    <img id="photoElement" style="display: none;">
+    
+    <script>
+        const captureButton = document.getElementById('captureButton');
+        const videoElement = document.getElementById('videoElement');
+        const canvasElement = document.getElementById('canvasElement');
+        const photoElement = document.getElementById('photoElement');
+
+        // Ottieni l'accesso alla fotocamera
+        if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+            navigator.mediaDevices.getUserMedia({ video: true })
+                .then(function (stream) {
+                    videoElement.srcObject = stream;
+                })
+                .catch(function (error) {
+                    console.error('Errore nell\'accesso alla fotocamera: ', error);
+                });
+        } else {
+            alert('Il tuo browser non supporta l\'accesso alla fotocamera.');
+        }
+
+        // Gestisci il clic sul pulsante di cattura
+        captureButton.addEventListener('click', function () {
+            const context = canvasElement.getContext('2d');
+            context.drawImage(videoElement, 0, 0, 640, 480);
+            photoElement.src = canvasElement.toDataURL('image/png');
+            photoElement.style.display = 'block';
+        });
+    </script>
+</body>
+</html>
