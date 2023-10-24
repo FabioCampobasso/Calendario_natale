@@ -20,7 +20,7 @@
         transform: translateY(0) rotate(0deg);
     }
     100% {
-        transform: translateY(100vh) rotate(360deg);
+        transform: translateY(130vh) rotate(360deg);
     }
 }
 
@@ -54,12 +54,3 @@
 
 
 
-#openImageInput{
-    background-color: #008CBA; /* Cambia il colore di sfondo */
-    color: #fff; /* Cambia il colore del testo */
-    padding: 10px 20px; /* Modifica il padding per regolare le dimensioni del pulsante */
-    border: none; /* Rimuovi il bordo */
-    cursor: pointer;
-    border-radius: 5px; /* Aggiungi bordi arrotondati */
-    font-weight: bold;
-}
