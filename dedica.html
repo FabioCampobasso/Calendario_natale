@@ -2,8 +2,8 @@
 <html>
 <head>
     <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:italic" rel="stylesheet">
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700&display=swap">
-
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700&display=swap">
+    
     <title>La Tua Dedica</title>
     <link rel="stylesheet" type="text/css" href="snow.css">
   
@@ -14,118 +14,110 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background-color:  #ece8df;  /* #ece8df */
+            background-color:  #ece8df;
         }
 
         .container {
             width: 1080px;
             height: 1920px;
-            background-color: trasparent; /* Cambia il colore di sfondo come preferisci */
+            background-color: transparent;
             display: flex;
             align-items: center;
             justify-content: center;
             position: relative;
         }
 
-#dedicationMessage {
-    font-family: 'Roboto Condensed', sans-serif;
-    font-style: italic;
-    text-align: center; /* Aggiunto allineamento al centro */
-    font-weight: 600;
-    font-size: 45px;
-    color: #508a8c;
-    text-transform: uppercase;
-    position: absolute;
-    /* Le coordinate ora si riferiscono all'area di 1080x1920 */
-    top: 35%; /* Posizionamento verticale al 37% all'interno dell'area */
-    left: 50%; /* Posizionamento orizzontale al centro dell'area */
-    transform: translateX(-50%);
-    white-space: pre-line;
-    overflow-wrap: break-word;
-    width: 570px;
-}
+        #dedicationMessage {
+            font-family: 'Roboto Condensed', sans-serif;
+            font-style: italic;
+            text-align: center;
+            font-weight: 600;
+            font-size: 45px;
+            color: #508a8c;
+            text-transform: uppercase;
+            position: absolute;
+            top: 35%;
+            left: 50%;
+            transform: translateX(-50%);
+            white-space: pre-line;
+            overflow-wrap: break-word;
+            width: 570px;
+        }
 
-
-#shareButton {
-    font-family: 'Roboto Condensed', sans-serif;
-    font-size: 20px;
-    background-color: #fff;
-    color: #508a8c;
-    padding: 10px 30px;
-    border: none;
-    cursor: pointer;
-    border-radius: 50px;
-    font-weight: bold;
-    position: absolute;
-    top: 79.5%;
-    left: 26.5%;
-    transform: translateX(-50%);
-}
-
-
-        #openImageInput {
-           font-family: 'Roboto Condensed', sans-serif;
+        #shareButton {
+            font-family: 'Roboto Condensed', sans-serif;
             font-size: 20px;
-            background-color: #508a8c;
-            color: #fff;
-            padding: 10px 80px;
+            background-color: #fff;
+            color: #508a8c;
+            padding: 10px 90px;
             border: none;
             cursor: pointer;
             border-radius: 50px;
             font-weight: bold;
-             position: absolute;
-                /* Le coordinate ora si riferiscono all'area di 1080x1920 */
-    top: 76.5%; /* Posizionamento verticale al 25% all'interno dell'area */
-    left: 26.5%; /* Posizionamento orizzontale al centro dell'area */
-    transform: translateX(-50%)
-
+            position: absolute;
+            top: 79.7%;
+            left: 26.5%;
+            transform: translateX(-50%);
         }
-		
 
+        #openImageInput {
+            font-family: 'Roboto Condensed', sans-serif;
+            font-size: 20px;
+            background-color: #508a8c;
+            color: #fff;
+            padding: 10px 60px;
+            border: none;
+            cursor: pointer;
+            border-radius: 50px;
+            font-weight: bold;
+            position: absolute;
+            top: 76.5%;
+            left: 26.5%;
+            transform: translateX(-50%);
+        }
 
         #imageInput {
             position: absolute;
             visibility: hidden;
         }
 
-#imageContainer {
-    position: absolute;
-    width: 450px;
-    height: 450px;
-    top: 50%; /* Posizionamento al centro verticale */
-    left: 40%; /* Posizionamento al centro orizzontale */
-    transform: translate(-50%, -50%); /* Per centrare l'elemento */
-    overflow: hidden;
-    z-index: -1;
-    transform: rotate(-8deg);
-}
+        #imageContainer {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            top: 46%;
+            left: 37%;
+            transform: translate(-50%, -50%);
+            overflow: hidden;
+            z-index: -1;
+            transform: rotate(-8deg);
+        }
 
+        #imageContainer img {
+            max-width: 100%;
+            max-height: 100%;
+            width: auto;
+            height: 100%;
+            scale: 102%;
+            display: block;
+            margin: 0 auto;
+            overflow: hidden;
+        }
 
-#imageContainer img {
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: contain;
-    object-position: center center;
-}
-
-
-
-
-#externalLink {
-    background-color: transparent;
-    border: 0px solid black;
-	border-radius: 50px;
-    color: #000;
-    padding: 41px 230px;
-    text-align: center;
-    font-size: 16px;
-    cursor: pointer;
-    position: absolute;
-    top: 32.7%; /* Posizionamento verticale al 25% all'interno dell'area */
-    left: 50%; /* Posizionamento orizzontale al centro dell'area */
-    transform: translate(-50%, -50%);
-}
-
+        #externalLink {
+            background-color: transparent;
+            border: 0px solid black;
+            border-radius: 50px;
+            color: #000;
+            padding: 41px 230px;
+            text-align: center;
+            font-size: 16px;
+            cursor: pointer;
+            position: absolute;
+            top: 32.7%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
 
         #snow-container {
             pointer-events: none;
@@ -141,13 +133,12 @@
         <p id="dedicationMessage"></p>
         <a id="externalLink" href="https://open.spotify.com/intl-it/track/0asgUXDrY7oWmFSllqoTo8?si=c86ee89f4f8640e2"></a>
         <button id="openImageInput">INSERISCI FOTO</button>
-		<button id="shareButton">CONDIVIDI SU SOCIAL MEDIA</button>
-
+        <button id="shareButton">CONDIVIDI</button>
     </div>
 
     <div id="imageContainer" class="custom-image-container">
         <input type="file" accept="image/*" id="imageInput" onchange="loadImage(this)">
- </div>
+    </div>
 
     <script>
         document.getElementById("openImageInput").addEventListener("click", function() {
@@ -168,42 +159,35 @@
             imageContainer.innerHTML = '';
             imageContainer.appendChild(image);
         }
-		
-document.getElementById("shareButton").addEventListener("click", function() {
-    // URL corrente della pagina
-    var currentPageUrl = window.location.href;
 
-    // Testo per la condivisione
-    var shareText = "Guarda questa dedica speciale: " + message; // Personalizza il testo a tuo piacimento.
-
-    if (navigator.share) {
-        // Se il browser supporta la Web Share API, utilizza quella per la condivisione
-        navigator.share({
-            title: "La Tua Dedica",
-            text: shareText,
-            url: currentPageUrl
-        }).then(() => {
-            console.log("Condivisione riuscita");
-        }).catch((error) => {
-            console.error("Errore nella condivisione:", error);
+        document.getElementById("shareButton").addEventListener("click", function() {
+            var currentPageUrl = window.location.href;
+            var shareText = "Guarda questa dedica speciale: " + message;
+            
+            if (navigator.share) {
+                navigator.share({
+                    title: "La Tua Dedica",
+                    text: shareText,
+                    url: currentPageUrl
+                }).then(() => {
+                    console.log("Condivisione riuscita");
+                }).catch((error) => {
+                    console.error("Errore nella condivisione:", error);
+                });
+            } else {
+                var copyInput = document.createElement("input");
+                copyInput.setAttribute("type", "text");
+                copyInput.setAttribute("value", currentPageUrl);
+                document.body.appendChild(copyInput);
+                copyInput.select();
+                document.execCommand("copy");
+                document.body.removeChild(copyInput);
+                alert("Il link è stato copiato negli appunti: " + currentPageUrl);
+            }
         });
-    } else {
-        // Se il browser non supporta la Web Share API, crea un campo di input nascosto e copia il link
-        var copyInput = document.createElement("input");
-        copyInput.setAttribute("type", "text");
-        copyInput.setAttribute("value", currentPageUrl);
-        document.body.appendChild(copyInput);
-        copyInput.select();
-        document.execCommand("copy");
-        document.body.removeChild(copyInput);
-
-        alert("Il link è stato copiato negli appunti: " + currentPageUrl);
-    }
-});
-
-
     </script>
 </body>
 </html>
+
 
 
