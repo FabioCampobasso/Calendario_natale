@@ -67,15 +67,15 @@ function nascondiFormaInBaseAllaData() {
   const forma2 = document.getElementById("forma2");
   const forma3 = document.getElementById("forma3");
 
-  if (mese === 10 && giorno >= 17 && giorno <= 25) {
+  if (mese === 10 && giorno >= 18 && giorno <= 25) {
     forma1.classList.remove("overlay");
   }
 
-  if (mese === 10 && giorno >= 18 && giorno <= 25) {
+  if (mese === 10 && giorno >= 19 && giorno <= 25) {
     forma2.classList.remove("overlay");
   }
 
-  if (mese === 10 && giorno >= 16 && giorno <= 25) {
+  if (mese === 10 && giorno >= 20 && giorno <= 25) {
     forma3.classList.remove("overlay");
   }
 }
@@ -84,31 +84,7 @@ nascondiFormaInBaseAllaData();
 
 
 //----------------------------------------------------------------------------------------------------------------------
-// Ottieni l'elemento video e il pulsante "Scatta Foto"
-const video = document.getElementById('webcam');
-const scattaFotoButton = document.getElementById('scattaFoto');
-const fotoCanvas = document.getElementById('fotoCanvas');
-const fotoThumbnail = document.getElementById('fotoThumbnail');
 
-// Verifica se il browser supporta la webcam
-navigator.mediaDevices.getUserMedia({ video: true })
-    .then(function (stream) {
-        video.srcObject = stream;
-    })
-    .catch(function (error) {
-        console.error('Errore nella cattura della webcam:', error);
-    });
-
-// Gestisci il click sul pulsante "Scatta Foto"
-scattaFotoButton.addEventListener('click', function () {
-    // Disegna il frame corrente del video sul canvas
-    fotoCanvas.getContext('2d').drawImage(video, 0, 0, fotoCanvas.width, fotoCanvas.height);
-
-    // Mostra il canvas come miniatura
-    fotoCanvas.style.display = 'none';
-    fotoThumbnail.src = fotoCanvas.toDataURL('image/png');
-    fotoThumbnail.style.display = 'block';
-});
 
 
 
