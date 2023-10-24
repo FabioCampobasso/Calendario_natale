@@ -2,18 +2,17 @@
 <html>
 
 <head>
-   	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700&display=swap">
     <link rel="stylesheet" type="text/css" href="styles.css">
     <style>
-        /* ... Altri stili CSS ... */
-
+        /* Stili CSS comuni */
         .tassello {
-            margin-top: 120px;
-			 margin-bottom: 245px;
-			  margin-left: 10px;
             display: flex;
             align-items: center;
             justify-content: space-between;
+            padding: 20px;
+            margin-bottom: -40px;
+			margin-left: -300px;
         }
 
         input[type="text"] {
@@ -29,53 +28,94 @@
             height: 58px;
             text-align: center;
             flex: 1;
+			margin-left: -800px;
+			
         }
 
         button {
- font-family: 'Roboto Condensed', sans-serif;
+            font-family: 'Arial', sans-serif;
             background-color: #ffffff;
             color: #74cdd0;
             font-size: 20px;
-            font-family: 'Arial', sans-serif;
-            padding: 16px 13px;
+            padding: 17px 13px;
             border: none;
             border-radius: 50px;
             cursor: pointer;
             flex: 0;
-			position: absolute; /* Imposta la posizione assoluta */
-    right: 0; /* Allinea il pulsante a destra */
-    z-index: 1;
+			margin-left: -50px;
         }
     </style>
 </head>
 
 <body>
 
-<div id="forma1" class="overlay"></div>
-<div id="forma2" class="overlay"></div>
-<div id="forma3" class="overlay"></div>
-
+      
     <div class="container">
         <div class="tassello">
+            <img src="1.png" alt="Immagine 1">
             <input type="text" id="messageInput" maxlength="50" placeholder="Scrivi la tua dedica">
-            <button id="submitButton" style="font-family: Arial, sans-serif;">INVIA</button>
+            <button id="submitButton">INVIA</button>
         </div>
+		
+		
 
         <div class="tassello">
+            <img src="2.png" alt="Immagine 2">
             <input type="text" id="messageInput2" maxlength="50" placeholder="Scrivi la tua dedica">
             <button id="submitButton2">INVIA</button>
         </div>
+		
+	<div class="tassello">
+    <img src="3.png" alt="Immagine 4">
+    <input type="text" id="messageInput4" maxlength="50" placeholder="Scrivi la tua dedica">
+    <button id="submitButton4">INVIA</button>
+</div>
+
+<div class="tassello">
+    <img src="4.png" alt="Immagine 4">
+    <input type="text" id="messageInput4" maxlength="50" placeholder="Scrivi la tua dedica">
+    <button id="submitButton4">INVIA</button>
+</div>
+
+<div class="tassello">
+    <img src="5.png" alt="Immagine 4">
+    <input type="text" id="messageInput4" maxlength="50" placeholder="Scrivi la tua dedica">
+    <button id="submitButton4">INVIA</button>
+</div>
+
+<div class="tassello">
+    <img src="1.png" alt="Immagine 4">
+    <input type="text" id="messageInput4" maxlength="50" placeholder="Scrivi la tua dedica">
+    <button id="submitButton4">INVIA</button>
+</div>
+
+<div class="tassello">
+    <img src="1.png" alt="Immagine 4">
+    <input type="text" id="messageInput4" maxlength="50" placeholder="Scrivi la tua dedica">
+    <button id="submitButton4">INVIA</button>
+</div>
+
 
         <div class="tassello">
+            <img src="2.png" alt="Immagine 3">
             <input type="text" id="messageInput3" maxlength="50" placeholder="Scrivi la tua dedica">
-            <button id="submitButton3" style="font-family: Arial, sans-serif;">INVIA</button>
+            <button id="submitButton3">INVIA</button>
         </div>
     </div>
+	
 
+
+	
+       
+      
+    
     <script src="script2.js"></script>
 </body>
 
 </html>
+
+
+
 
 
 
