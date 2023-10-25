@@ -23,27 +23,30 @@
             background-color: #74cdd0;
             color: #fff;
             font-family: 'Arial';
+			font-weight: 200;
             font-size: 37px;
             outline: none;
-            width: 680px;
-            height: 58px;
+            width: 720px;
+            height: 63px;
             text-align: center;
             flex: 1;
-			margin-left: -800px;
-			
+			margin-left: -810px;
+			text-indent: -55px;
+			text-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2);
         }
 
         button {
             font-family: 'Arial', sans-serif;
+			font-weight: 900;
             background-color: #ffffff;
             color: #74cdd0;
-            font-size: 20px;
-            padding: 17px 13px;
+            font-size: 28px;
+            padding: 5px 12px;
             border: none;
             border-radius: 50px;
             cursor: pointer;
             flex: 0;
-			margin-left: -50px;
+			margin-left: -120px;
         }
 
     </style>
@@ -107,9 +110,15 @@
         </div>
     </div>
 	
+<script>
+  const messageInput = document.getElementById("messageInput");
 
-
-	
+  // Aggiungi un gestore di eventi per il clic all'input
+  messageInput.addEventListener("click", function () {
+    // Quando viene fatto clic all'interno dell'input, impostiamo il valore su una stringa vuota
+    messageInput.placeholder = "";
+  });
+</script>
        
       
     

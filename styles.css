@@ -1,6 +1,6 @@
 
 body {
-    background-color: #fff;
+    background-color: #000;
     background-size: contain;
     background-repeat: no-repeat;
     background-position: 0 0;
@@ -20,11 +20,10 @@ body {
 }
 
 .overlay {
-  width: 1015px;
+  width: 1010px;
   height: 327px;
   background-color: rgba(255, 255, 255, 0.7);
   position: absolute;
-  margin-top: -10px;
   top: 0;
   left: 0;
   z-index: 1;
@@ -32,13 +31,16 @@ body {
   transition: opacity 1s; /* Aggiungi una transizione di 2 secondi per l'opacità */
 }
 
+#forma1 {
+  margin-top: -15px;
+}
 
 #forma2 {
-  margin-top: 317px;
+  margin-top: 315px;
 }
 
 #forma3 {
-  margin-top: 644px;
+  margin-top: 642px;
 }
 
 
@@ -64,6 +66,8 @@ input[type="text"] {
 }
 
 input[type="text"]::placeholder {
-    color: #bf3630;
+    color: #fff;
+	font-weight: bold;
+	
 }
 
