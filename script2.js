@@ -1,96 +1,55 @@
 
-// FUNZIONE PER I VARI BOTTONI PULSANTI: FA PASSARE DA UNA PAGINA ALL'ALTRA QUANDO SI CLICCA INVIA
+    // Definiamo i link per ciascuna immagine
+        var link1 = "dedica.html";
+        var link2 = "dedica2.html";
+        var link3 = "dedica3.html";
 
-document.addEventListener("DOMContentLoaded", function() {
-    var submitButton = document.getElementById("submitButton");
-    submitButton.addEventListener("click", function() {
-        var messageInput = document.getElementById("messageInput");
-        var message = messageInput.value;
+        // Variabile per memorizzare il link selezionato
+        var linkSelezionato = "";
 
-        if (message.trim() !== "") {
-            // Codifica il messaggio per passarlo come parametro nell'URL
-            var encodedMessage = encodeURIComponent(message);
+        // Gestore di eventi per cliccare sulle immagini
+        function imageClickHandler(imageId, link) {
+            // Rimuovi la classe "clicked" da tutte le immagini
+            var allImages = document.querySelectorAll("img");
+            allImages.forEach(function(img) {
+                img.classList.remove("clicked");
+            });
 
-            // Costruisci l'URL della nuova pagina con il messaggio come parametro
-            var newPageURL = "dedica.html?message=" + encodedMessage;
+            // Aggiungi la classe "clicked" all'immagine cliccata
+            var selectedImage = document.getElementById(imageId);
+            selectedImage.classList.add("clicked");
 
-            // Reindirizza l'utente alla nuova pagina
-            window.location.href = newPageURL;
+            // Imposta il link selezionato
+            linkSelezionato = link;
         }
-    });
-});
 
-document.addEventListener("DOMContentLoaded", function() {
-    var submitButton = document.getElementById("submitButton2");
-    submitButton.addEventListener("click", function() {
-        var messageInput = document.getElementById("messageInput2");
-        var message = messageInput.value;
+        // Aggiungi gestori di eventi alle immagini di selezione
+        document.getElementById("link1").addEventListener("click", function() {
+            imageClickHandler("link1", link1);
+        });
 
-        if (message.trim() !== "") {
-            // Codifica il messaggio per passarlo come parametro nell'URL
-            var encodedMessage = encodeURIComponent(message);
+        document.getElementById("link2").addEventListener("click", function() {
+            imageClickHandler("link2", link2);
+        });
 
-            // Costruisci l'URL della nuova pagina con il messaggio come parametro
-            var newPageURL = "dedica2.html?message=" + encodedMessage;
+        document.getElementById("link3").addEventListener("click", function() {
+            imageClickHandler("link3", link3);
+        });
 
-            // Reindirizza l'utente alla nuova pagina
-            window.location.href = newPageURL;
-        }
-    });
-});
+        // Aggiungi un gestore di eventi al pulsante "Invia"
+        document.getElementById("submitButton").addEventListener("click", function() {
+            if (linkSelezionato !== "") {
+                // Estrai il messaggio dall'input
+                var messageInput = document.getElementById("messageInput");
+                var message = messageInput.value;
 
-document.addEventListener("DOMContentLoaded", function() {
-    var submitButton = document.getElementById("submitButton3");
-    submitButton.addEventListener("click", function() {
-        var messageInput = document.getElementById("messageInput3");
-        var message = messageInput.value;
+                // Codifica il messaggio per passarlo come parametro nell'URL
+                var encodedMessage = encodeURIComponent(message);
 
-        if (message.trim() !== "") {
-            // Codifica il messaggio per passarlo come parametro nell'URL
-            var encodedMessage = encodeURIComponent(message);
+                // Costruisci l'URL della nuova pagina con il messaggio come parametro
+                var newPageURL = linkSelezionato + "?message=" + encodedMessage;
 
-            // Costruisci l'URL della nuova pagina con il messaggio come parametro
-            var newPageURL = "dedica3.html?message=" + encodedMessage;
-
-            // Reindirizza l'utente alla nuova pagina
-            window.location.href = newPageURL;
-        }
-    });
-});
-
-function nascondiFormaInBaseAllaData() {
-  const dataAttuale = new Date();
-  const giorno = dataAttuale.getDate();
-  const mese = dataAttuale.getMonth() + 1;
-
-  const forma1 = document.getElementById("forma1");
-  const forma2 = document.getElementById("forma2");
-  const forma3 = document.getElementById("forma3");
-
-  if (mese === 10 && giorno >= 20 && giorno <= 25) {
-    forma1.classList.remove("overlay");
-  }
-
-  if (mese === 10 && giorno >= 21 && giorno <= 25) {
-    forma2.classList.remove("overlay");
-  }
-
-  if (mese === 10 && giorno >= 22 && giorno <= 25) {
-    forma3.classList.remove("overlay");
-  }
-}
-
-nascondiFormaInBaseAllaData();
-
-
-//----------------------------------------------------------------------------------------------------------------------
-
-
-
-
-
-
-
-
-
-
+                // Reindirizza l'utente alla nuova pagina
+                window.location.href = newPageURL;
+            }
+        });

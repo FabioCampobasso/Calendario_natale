@@ -1,137 +1,100 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-<meta name="viewport" content="user-scalable=0">
-
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700&display=swap">
-    <link rel="stylesheet" type="text/css" href="styles.css">
+    <title>Selezione di link con HTML e JavaScript</title>
     <style>
-        /* Stili CSS comuni */
-        .tassello {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-                      margin-bottom: 0px;
-			margin-left: -300px;
+        /* Stile di base per le immagini */
+        img {
+            margin: 0;
         }
 
-        input[type="text"] {
-            border: none;
-            border-radius: 50px;
-            padding: 0px;
-            background-color: #74cdd0;
-            color: #fff;
-            font-family: 'Arial';
-			font-weight: 200;
-            font-size: 37px;
-            outline: none;
-            width: 718px;
-            height: 63px;
-            text-align: center;
-            flex: 1;
-			margin-left: -810px;
-			text-indent: -55px;
+        /* Stile quando l'immagine è cliccata */
+        img.clicked {
+            filter: hue-rotate(185deg); /* Cambia la tonalità al clic (esempio: 180deg per il blu) */
         }
-
-        button {
-            font-family: 'Arial', sans-serif;
-			font-weight: 1000;
-            background-color: #ffffff;
-            color: #bf3630;
-            font-size: 28px;
-            padding: 5px 12px;
-            border: none;
-            border-radius: 50px;
-            cursor: pointer;
-            flex: 0;
-			margin-left: -118px;
+		
+        #messageInput {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            font-size: 50px;
         }
-
+	
+        #submitButton {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            font-size: 50px;
+        }
     </style>
 </head>
-
 <body>
-<div id="forma1" class="overlay"></div>
-<div id="forma2" class="overlay"></div>
-<div id="forma3" class="overlay"></div>
+    <input type="text" id="messageInput" maxlength="40" placeholder="Scrivi la tua dedica">
+    <button id="submitButton">INVIA</button>
+    <img id="link1" src="1.png" alt="Immagine 1">
+    <img id="link2" src="2.png" alt="Immagine 2">
+    <img id="link3" src="3.png" alt="Immagine 3">
 
-    <div class="container">
-        <div class="tassello">
-            <img src="1.png" alt="Immagine 1">
-            <input type="text" id="messageInput" maxlength="40" placeholder="Scrivi la tua dedica">
-            <button id="submitButton">INVIA</button>
-        </div>
-		
-		
+    <script>
+        // Definiamo i link per ciascuna immagine
+        var link1 = "dedica.html";
+        var link2 = "dedica2.html";
+        var link3 = "dedica3.html";
 
-        <div class="tassello">
-            <img src="2.png" alt="Immagine 2">
-            <input type="text" id="messageInput2" maxlength="40" placeholder="Scrivi la tua dedica">
-            <button id="submitButton2">INVIA</button>
-        </div>
-		
-	<div class="tassello">
-    <img src="3.png" alt="Immagine 4">
-    <input type="text" id="messageInput4" maxlength="40" placeholder="Scrivi la tua dedica">
-    <button id="submitButton4">INVIA</button>
-</div>
+        // Variabile per memorizzare il link selezionato
+        var linkSelezionato = "";
 
-<div class="tassello">
-    <img src="4.png" alt="Immagine 4">
-    <input type="text" id="messageInput4" maxlength="40" placeholder="Scrivi la tua dedica">
-    <button id="submitButton4">INVIA</button>
-</div>
+        // Gestore di eventi per cliccare sulle immagini
+        function imageClickHandler(imageId, link) {
+            // Rimuovi la classe "clicked" da tutte le immagini
+            var allImages = document.querySelectorAll("img");
+            allImages.forEach(function(img) {
+                img.classList.remove("clicked");
+            });
 
-<div class="tassello">
-    <img src="5.png" alt="Immagine 4">
-    <input type="text" id="messageInput4" maxlength="40" placeholder="Scrivi la tua dedica">
-    <button id="submitButton4">INVIA</button>
-</div>
+            // Aggiungi la classe "clicked" all'immagine cliccata
+            var selectedImage = document.getElementById(imageId);
+            selectedImage.classList.add("clicked");
 
-<div class="tassello">
-    <img src="1.png" alt="Immagine 4">
-    <input type="text" id="messageInput4" maxlength="40" placeholder="Scrivi la tua dedica">
-    <button id="submitButton4">INVIA</button>
-</div>
+            // Imposta il link selezionato
+            linkSelezionato = link;
+        }
 
-<div class="tassello">
-    <img src="1.png" alt="Immagine 4">
-    <input type="text" id="messageInput4" maxlength="40" placeholder="Scrivi la tua dedica">
-    <button id="submitButton4">INVIA</button>
-</div>
+        // Aggiungi gestori di eventi alle immagini di selezione
+        document.getElementById("link1").addEventListener("click", function() {
+            imageClickHandler("link1", link1);
+        });
 
+        document.getElementById("link2").addEventListener("click", function() {
+            imageClickHandler("link2", link2);
+        });
 
-        <div class="tassello">
-            <img src="2.png" alt="Immagine 3">
-            <input type="text" id="messageInput3" maxlength="40" placeholder="Scrivi la tua dedica">
-            <button id="submitButton3">INVIA</button>
-        </div>
-    </div>
-	
-<script>
-  const messageInput = document.getElementById("messageInput");
+        document.getElementById("link3").addEventListener("click", function() {
+            imageClickHandler("link3", link3);
+        });
 
-  // Aggiungi un gestore di eventi per il clic all'input
-  messageInput.addEventListener("click", function () {
-    // Quando viene fatto clic all'interno dell'input, impostiamo il valore su una stringa vuota
-    messageInput.placeholder = "";
-  });
-</script>
-       
-      
-    
-    <script src="script2.js"></script>
+        // Aggiungi un gestore di eventi al pulsante "Invia"
+        document.getElementById("submitButton").addEventListener("click", function() {
+            if (linkSelezionato !== "") {
+                // Estrai il messaggio dall'input
+                var messageInput = document.getElementById("messageInput");
+                var message = messageInput.value;
+
+                // Codifica il messaggio per passarlo come parametro nell'URL
+                var encodedMessage = encodeURIComponent(message);
+
+                // Costruisci l'URL della nuova pagina con il messaggio come parametro
+                var newPageURL = linkSelezionato + "?message=" + encodedMessage;
+
+                // Reindirizza l'utente alla nuova pagina
+                window.location.href = newPageURL;
+            }
+        });
+    </script>
 </body>
-
 </html>
-
-
-
-
-
-
-
-
-
 

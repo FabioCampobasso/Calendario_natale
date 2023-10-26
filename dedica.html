@@ -16,6 +16,14 @@
             justify-content: center;
             background-color:  #ece8df;
         }
+		
+		        iframe {
+        border-radius: 12px;
+        position: absolute;
+		top: 20%;
+		left: center;
+        z-index: 2;
+        }
 
         .container {
             width: 1080px;
@@ -153,7 +161,7 @@
         <img src="biglietto.png" alt="Biglietto">
 	
         <p id="dedicationMessage"></p>
-        <a id="externalLink" href="https://open.spotify.com/intl-it/track/0asgUXDrY7oWmFSllqoTo8?si=c86ee89f4f8640e2"></a>
+        <iframe src="https://open.spotify.com/embed/track/27RYrbL6S02LNVhDWVl38b?utm_source=generator&theme=0" width="600" height="300" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture" loading="lazy"></iframe>
         <button id="openImageInput">INSERISCI FOTO</button>
         <button id="shareButton">CONDIVIDI</button>
 		<button id="createCardButton" onclick="window.location.href='https://fabiocampobasso.github.io/Calendario_natale/'">CREA IL TUO BIGLIETTO</button>
