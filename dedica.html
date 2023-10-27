@@ -2,6 +2,11 @@
 <html>
 
 <head>
+    <meta property="og:title" content="La Tua Dedica">
+    <meta property="og:description" content="Guarda questa dedica speciale che ho creato per te!">
+    <meta property="og:image" content="test.jpg">
+    <meta property="og:url" content="https://fabiocampobasso.github.io/Calendario_natale/dedica.html?message=gfgf&view=shared">
+
     <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:italic" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700&display=swap">
 
@@ -157,6 +162,7 @@ iframe {
         }
    
     </style>
+
 </head>
 
 <body>
@@ -172,7 +178,6 @@ iframe {
         <button id="openImageInput">INSERISCI FOTO</button>
         <button id="shareButton">CONDIVIDI</button>
         <button id="createCardButton" style="display: none;" onclick="window.location.href='https://fabiocampobasso.github.io/Calendario_natale/'">CREA IL TUO BIGLIETTO</button>
-
     </div>
 
     <div id="imageContainer" class="custom-image-container">
@@ -186,16 +191,11 @@ iframe {
 
         var queryString = window.location.search;
         var urlParams = new URLSearchParams(queryString);
-        var message = urlParams.get("message");
         var viewMode = urlParams.get("view");
-
-        var dedicationMessageElement = document.getElementById("dedicationMessage");
-        dedicationMessageElement.textContent = message ? message.toUpperCase() : "";
 
         if (viewMode === "shared") {
             document.getElementById("openImageInput").style.display = "none";
             document.getElementById("shareButton").style.display = "none";
-            //document.getElementById("createCardButton").style.display = "block";
         }
 
         function loadImage(input) {
@@ -208,14 +208,12 @@ iframe {
 
         document.getElementById("shareButton").addEventListener("click", function() {
             var currentPageUrl = window.location.href;
-            var shareText = "Guarda questa dedica speciale: " + message;
-
             var sharedLink = currentPageUrl.includes("?") ? currentPageUrl + "&view=shared" : currentPageUrl + "?view=shared";
 
             if (navigator.share) {
                 navigator.share({
                     title: "La Tua Dedica",
-                    text: shareText,
+                    text: "Guarda questa dedica speciale!",
                     url: sharedLink
                 }).then(() => {
                     console.log("Condivisione riuscita");
@@ -237,7 +235,3 @@ iframe {
 </body>
 
 </html>
-
-
-
-
