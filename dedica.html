@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:italic" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700&display=swap">
-    
+
     <title>La Tua Dedica</title>
     <link rel="stylesheet" type="text/css" href="snow.css">
-  
+
     <style>
+    
         body {
             margin: 0;
             height: 100vh;
@@ -23,7 +25,7 @@ iframe {
     scale: 280%;
 	top:15%;
     z-index: 1;   /* Aumenta il valore di z-index per assicurarti che sia sopra gli altri elementi */
-    width: 300;     /* Estendi in larghezza al 100% */
+    width: 302;     /* Estendi in larghezza al 100% */
     height: 100px;    /* Puoi impostare un'altezza fissa o variabile a seconda delle tue necessità */
 }
 
@@ -153,20 +155,23 @@ iframe {
         #snow-container {
             pointer-events: none;
         }
+   
     </style>
 </head>
+
 <body>
     <div id="snow-container"></div>
     <script src="snow.js"></script>
 
     <div class="container">
         <img src="biglietto.png" alt="Biglietto">
-	
+
         <p id="dedicationMessage"></p>
-<iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/5ip1FIfC7crfMQEQHQ8dOI?utm_source=generator" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/5ip1FIfC7crfMQEQHQ8dOI?utm_source=generator" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            loading="lazy"></iframe>
         <button id="openImageInput">INSERISCI FOTO</button>
         <button id="shareButton">CONDIVIDI</button>
-		<button id="createCardButton" onclick="window.location.href='https://fabiocampobasso.github.io/Calendario_natale/'">CREA IL TUO BIGLIETTO</button>
+        <button id="createCardButton" style="display: none;" onclick="window.location.href='https://fabiocampobasso.github.io/Calendario_natale/'">CREA IL TUO BIGLIETTO</button>
 
     </div>
 
@@ -182,9 +187,16 @@ iframe {
         var queryString = window.location.search;
         var urlParams = new URLSearchParams(queryString);
         var message = urlParams.get("message");
+        var viewMode = urlParams.get("view");
 
         var dedicationMessageElement = document.getElementById("dedicationMessage");
-        dedicationMessageElement.textContent = message.toUpperCase();
+        dedicationMessageElement.textContent = message ? message.toUpperCase() : "";
+
+        if (viewMode === "shared") {
+            document.getElementById("openImageInput").style.display = "none";
+            document.getElementById("shareButton").style.display = "none";
+            document.getElementById("createCardButton").style.display = "block";
+        }
 
         function loadImage(input) {
             const imageContainer = document.getElementById('imageContainer');
@@ -197,12 +209,14 @@ iframe {
         document.getElementById("shareButton").addEventListener("click", function() {
             var currentPageUrl = window.location.href;
             var shareText = "Guarda questa dedica speciale: " + message;
-            
+
+            var sharedLink = currentPageUrl.includes("?") ? currentPageUrl + "&view=shared" : currentPageUrl + "?view=shared";
+
             if (navigator.share) {
                 navigator.share({
                     title: "La Tua Dedica",
                     text: shareText,
-                    url: currentPageUrl
+                    url: sharedLink
                 }).then(() => {
                     console.log("Condivisione riuscita");
                 }).catch((error) => {
@@ -211,17 +225,19 @@ iframe {
             } else {
                 var copyInput = document.createElement("input");
                 copyInput.setAttribute("type", "text");
-                copyInput.setAttribute("value", currentPageUrl);
+                copyInput.setAttribute("value", sharedLink);
                 document.body.appendChild(copyInput);
                 copyInput.select();
                 document.execCommand("copy");
                 document.body.removeChild(copyInput);
-                alert("Il link è stato copiato negli appunti: " + currentPageUrl);
+                alert("Il link è stato copiato negli appunti: " + sharedLink);
             }
         });
     </script>
 </body>
+
 </html>
+
 
 
 

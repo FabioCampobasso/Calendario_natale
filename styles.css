@@ -1,74 +1,12 @@
-
-body {
-    background-color: #fff;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: 0 0;
-    margin: 0;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 18px;
-    touch-action: manipulation;
+@keyframes rotateVinyl {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
 }
-
-#animatedText {
-    max-width: 33%;
-    text-align: center;
-    padding: 20px;
+#link0 {
+    animation: rotateVinyl 10s linear infinite;
+    transform-origin: center center;
 }
-
-.overlay {
-  width: 1010px;
-  height: 327px;
-  background-color: rgba(255, 255, 255, 0.7);
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 1;
-  cursor: pointer;
-  transition: opacity 1s; /* Aggiungi una transizione di 2 secondi per l'opacità */
-}
-
-#forma1 {
-  margin-top: -15px;
-}
-
-#forma2 {
-  margin-top: 315px;
-}
-
-#forma3 {
-  margin-top: 642px;
-}
-
-
-
-
-.container {
-    position: absolute;
-    left: 230px;
-    top: -90px;
-    margin-top: 80px;
-}
-
-input[type="text"] {
-    border: none;
-    border-radius: 50px;
-    padding: 0px;
-    background-color: #74cdd0;
-    color: #fff;
-    font-size: 16px;
-	font-weight: bold;
-    outline: none;
-    width: 500px;
-    height: 50px;
-}
-
-input[type="text"]::placeholder {
-    color: #fff;
-	font-weight: bold;
-	
-}
-
