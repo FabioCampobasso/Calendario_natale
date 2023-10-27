@@ -2,6 +2,8 @@
 <html>
 
 <head>
+
+
     <meta property="og:title" content="La Tua Dedica">
     <meta property="og:description" content="Guarda questa dedica speciale che ho creato per te!">
     <meta property="og:image" content="anteprima.png">
@@ -249,6 +251,11 @@ iframe {
                 alert("Il link è stato copiato negli appunti: " + sharedLink);
             }
         });
+		
+		 document.body.addEventListener('touchstart', function() {
+        let spotifyIframe = document.getElementById('spotifyEmbed');
+        spotifyIframe.contentWindow.postMessage('{"action":"play"}', '*');
+    }, { once: true }); // L'evento viene eseguito una sola volta
     </script>
 </body>
 
