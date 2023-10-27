@@ -205,6 +205,24 @@ iframe {
             imageContainer.innerHTML = '';
             imageContainer.appendChild(image);
         }
+		
+		function getParameterByName(name, url) {
+        if (!url) url = window.location.href;
+        name = name.replace(/[\[\]]/g, '\\$&');
+        var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+            results = regex.exec(url);
+        if (!results) return null;
+        if (!results[2]) return '';
+        return decodeURIComponent(results[2].replace(/\+/g, ' '));
+    }
+
+    // Usa la funzione per ottenere il messaggio dall'URL
+    var message = getParameterByName('message');
+
+    // Inserisci il messaggio nel DOM
+    if (message) {
+        document.getElementById('dedicationMessage').textContent = message;
+    }
 
         document.getElementById("shareButton").addEventListener("click", function() {
             var currentPageUrl = window.location.href;
