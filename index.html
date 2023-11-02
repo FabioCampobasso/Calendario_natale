@@ -12,7 +12,7 @@
 }
 
 body {
-    background-color: #71c7c9;
+    background-color: #63b0b3;
     overflow: hidden;
 }
 
@@ -46,9 +46,7 @@ img {
 	scale: 80%;
 }
 
-img.clicked {
-    filter: hue-rotate(185deg);
-}
+
 
 #messageInput {
     width: 740px;
@@ -90,7 +88,12 @@ img.clicked {
 <script>
     var link1 = "dedica.html";
     var link2 = "dedica2.html";
-    var link3 = "dedica3.html";
+    var link3 = "dedica.html";
+	var link4 = "dedica.html";
+    var link5 = "dedica.html";
+    var link6 = "dedica.html";
+    var link7 = "dedica.html";
+    
 	
 	function checkMaxLength(textarea) {
     if (textarea.value.length > 44) {
@@ -128,6 +131,25 @@ img.clicked {
     document.getElementById("link3").addEventListener("click", function() {
         imageClickHandler("link3", link3);
     });
+	
+	    document.getElementById("link4").addEventListener("click", function() {
+        imageClickHandler("link4", link4);
+    });
+
+    document.getElementById("link5").addEventListener("click", function() {
+        imageClickHandler("link5", link5);
+    });
+
+    document.getElementById("link6").addEventListener("click", function() {
+        imageClickHandler("link6", link6);
+    });
+	
+	    document.getElementById("link7").addEventListener("click", function() {
+        imageClickHandler("link7", link7);
+    });
+	
+
+
 
     function autoResize(textarea) {
         textarea.style.height = 'auto';             // Reset the height
