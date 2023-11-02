@@ -27,14 +27,13 @@
         }
 		
 iframe {
- 
-    border-radius: 50px;
-    position: absolute;  /* Cambia da absolute a fixed */
-	top:31%;
-    z-index: 1;   /* Aumenta il valore di z-index per assicurarti che sia sopra gli altri elementi */
-  
-	scale: 170%;
-   
+    position: fixed;  /* Rende il player fisso */
+    top: 0;  /* Posiziona il player in cima alla pagina */
+    left: 0;  /* Posiziona il player all'inizio della pagina */
+    width: 100%;  /* Larghezza al 100% */
+    height: 80px;  /* Puoi regolare l'altezza come desideri */
+    border-radius: 0;  /* Rendi i bordi piatti */
+    z-index: 1000;  /* Assicurati che il player sia sopra gli altri elementi */
 }
 
         .container {
