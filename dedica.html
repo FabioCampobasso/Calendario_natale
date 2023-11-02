@@ -32,9 +32,9 @@ iframe {
     position: absolute;  /* Cambia da absolute a fixed */
 	top:31%;
     z-index: 1;   /* Aumenta il valore di z-index per assicurarti che sia sopra gli altri elementi */
-    width: 402;     /* Estendi in larghezza al 100% */
+  
 	scale: 170%;
-    height: 80px;    /* Puoi impostare un'altezza fissa o variabile a seconda delle tue necessità */
+   
 }
 
         .container {
@@ -56,7 +56,7 @@ iframe {
             color: #508a8c;
             text-transform: uppercase;
             position: absolute;
-            top: 35%;
+            top: 36%;
             left: 50%;
             transform: translateX(-50%);
             white-space: pre-line;
@@ -70,14 +70,14 @@ iframe {
             font-size: 40px;
             background-color: #fff;
             color: #508a8c;
-            padding: 15px 130px;
+            padding: 15px 100px;
             border: none;
             cursor: pointer;
             border-radius: 50px;
             font-weight: bold;
             position: absolute;
             top: 81%;
-             left: 34%;
+             left: 31%;
             transform: translateX(-50%);
 			box-shadow: -10px 10px 0px 0 rgba(0, 0, 0, 0.2); 
 }
@@ -105,14 +105,14 @@ iframe {
             font-size: 40px;
             background-color: #508a8c;
             color: #fff;
-            padding: 15px 88px;
+            padding: 15px 58px;
             border: none;
             cursor: pointer;
             border-radius: 50px;
             font-weight: bold;
             position: absolute;
             top: 76%;
-            left: 34%;
+            left: 31%;
             transform: translateX(-50%);
 			
         }
@@ -127,11 +127,11 @@ iframe {
             width: 500px;
             height: 500px;
             top: 46%;
-            left: 36%;
+            left: 39%;
             transform: translate(-50%, -50%);
             overflow: hidden;
             z-index: -1;
-            transform: rotate(-8deg);
+            transform: rotate(-7deg);
         }
 
         #imageContainer img {
@@ -139,7 +139,7 @@ iframe {
             max-height: 100%;
             width: auto;
             height: 100%;
-            scale: 106%;
+            scale: 104%;
             display: block;
             margin: 0 auto;
             overflow: hidden;
@@ -176,7 +176,7 @@ iframe {
         <img src="biglietto.png" alt="Biglietto">
 
         <p id="dedicationMessage"></p>
-<iframe style="border-radius:20px" src="https://open.spotify.com/embed/track/77nF1t4qesuOJRd8lbIzNX?utm_source=generator" width="38%" height="140" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>            
+<iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/77nF1t4qesuOJRd8lbIzNX?utm_source=generator" width="38%" height="100" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>            
         <button id="openImageInput">INSERISCI FOTO</button>
         <button id="shareButton">CONDIVIDI</button>
         <button id="createCardButton" style="display: none;" onclick="window.location.href='https://fabiocampobasso.github.io/Calendario_natale/'">CREA IL TUO BIGLIETTO</button>
@@ -187,8 +187,10 @@ iframe {
     </div>
 
     <script>
-        document.getElementById("openImageInput").addEventListener("click", function() {
+ document.getElementById("openImageInput").addEventListener("click", function() {
             document.getElementById("imageInput").click();
+            // Hide the "INSERISCI FOTO" button once it's clicked
+            this.style.display = "none";
         });
 
         var queryString = window.location.search;

@@ -1,117 +1,185 @@
 <!DOCTYPE html>
 <html>
+
 <head>
+
+
+    <meta property="og:title" content="La Tua Dedica">
+    <meta property="og:description" content="Guarda questa dedica speciale che ho creato per te!">
+    <meta property="og:image" content="anteprima.png">
+    <meta property="og:url" content="https://fabiocampobasso.github.io/Calendario_natale/dedica.html?message=gfgf&view=shared">
+
     <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:italic" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700&display=swap">
+
     <title>La Tua Dedica</title>
     <link rel="stylesheet" type="text/css" href="snow.css">
-  
+
     <style>
+    
         body {
             margin: 0;
             height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 18px;
-            background-color: #ece8df;
+            background-color:  #ece8df;
         }
+		
+iframe {
+ 
+    border-radius: 50px;
+    position: absolute;  /* Cambia da absolute a fixed */
+	top:31%;
+    z-index: 1;   /* Aumenta il valore di z-index per assicurarti che sia sopra gli altri elementi */
+  
+	scale: 170%;
+   
+}
 
         .container {
-            position: relative;
-            width: 100vw;
-            height: 100vh;
+            width: 1080px;
+            height: 1920px;
+            background-color: transparent;
             display: flex;
             align-items: center;
             justify-content: center;
-        }
-
-        .container img {
-            max-width: 100%;
-            max-height: 100%;
-            display: block;
-            margin: auto;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+            position: relative;
         }
 
         #dedicationMessage {
             font-family: 'Roboto Condensed', sans-serif;
             font-style: italic;
-            font-weight: 400;
-            font-size: 40px;
             text-align: center;
+            font-weight: 600;
+            font-size: 48px;
             color: #508a8c;
             text-transform: uppercase;
             position: absolute;
-            top: 39%;
+            top: 36%;
+            left: 50%;
+            transform: translateX(-50%);
             white-space: pre-line;
             overflow-wrap: break-word;
-            width: 520px;
+            width: 600px;
+        }
+		
+
+        #shareButton {
+            font-family: 'Roboto Condensed', sans-serif;
+            font-size: 40px;
+            background-color: #fff;
+            color: #508a8c;
+            padding: 15px 100px;
+            border: none;
+            cursor: pointer;
+            border-radius: 50px;
+            font-weight: bold;
+            position: absolute;
+            top: 81%;
+             left: 31%;
+            transform: translateX(-50%);
+			box-shadow: -10px 10px 0px 0 rgba(0, 0, 0, 0.2); 
+}
+        
+		
+				        #createCardButton {
+						background-color: #bf3630;
+            font-family: 'Roboto Condensed', sans-serif;
+            font-size: 40px; 
+            color: #fff;
+            padding: 20px 25px;
+            border: none;
+            cursor: pointer;
+            border-radius: 50px;
+            font-weight: bold;
+            position: absolute;
+            top: 81%;
+            left: 34%;
+            transform: translateX(-50%);
+			
         }
 
         #openImageInput {
             font-family: 'Roboto Condensed', sans-serif;
-            font-size: 20px;
+            font-size: 40px;
             background-color: #508a8c;
             color: #fff;
-            padding: 10px 20px;
+            padding: 15px 58px;
             border: none;
             cursor: pointer;
-            border-radius: 5px;
+            border-radius: 50px;
             font-weight: bold;
             position: absolute;
-            top: 80%;
+            top: 76%;
+            left: 31%;
+            transform: translateX(-50%);
+			
         }
 
         #imageInput {
-           position: absolute;
+            position: absolute;
             visibility: hidden;
         }
 
         #imageContainer {
             position: absolute;
-            top: 50%;
-            left: 50%;
+            width: 500px;
+            height: 500px;
+            top: 46%;
+            left: 39%;
             transform: translate(-50%, -50%);
-            width: 600px;
-            height: 600px;
+            overflow: hidden;
             z-index: -1;
+            transform: rotate(-7deg);
         }
 
         #imageContainer img {
             max-width: 100%;
             max-height: 100%;
-            transform: rotate(-7deg);
+            width: auto;
+            height: 100%;
+            scale: 104%;
+            display: block;
+            margin: 0 auto;
+            overflow: hidden;
         }
 
         #externalLink {
             background-color: transparent;
-            border: 0;
+            border: 0px solid black;
+            border-radius: 50px;
             color: #000;
-            padding: 50px 220px;
+            padding: 41px 230px;
             text-align: center;
             font-size: 16px;
             cursor: pointer;
             position: absolute;
-            top: 33.5%;
+            top: 32.7%;
+            left: 50%;
+            transform: translate(-50%, -50%);
         }
 
         #snow-container {
             pointer-events: none;
         }
+   
     </style>
+
 </head>
+
 <body>
     <div id="snow-container"></div>
     <script src="snow.js"></script>
 
     <div class="container">
         <img src="biglietto2.png" alt="Biglietto">
+
         <p id="dedicationMessage"></p>
-        <a id="externalLink" href="https://open.spotify.com/intl-it/track/0asgUXDrY7oWmFSllqoTo8?si=c86ee89f4f8640e2"></a>
+<iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/77nF1t4qesuOJRd8lbIzNX?utm_source=generator" width="38%" height="100" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>            
         <button id="openImageInput">INSERISCI FOTO</button>
+        <button id="shareButton">CONDIVIDI</button>
+        <button id="createCardButton" style="display: none;" onclick="window.location.href='https://fabiocampobasso.github.io/Calendario_natale/'">CREA IL TUO BIGLIETTO</button>
     </div>
 
     <div id="imageContainer" class="custom-image-container">
@@ -119,16 +187,22 @@
     </div>
 
     <script>
-        document.getElementById("openImageInput").addEventListener("click", function() {
+ document.getElementById("openImageInput").addEventListener("click", function() {
             document.getElementById("imageInput").click();
+            // Hide the "INSERISCI FOTO" button once it's clicked
+            this.style.display = "none";
         });
 
         var queryString = window.location.search;
         var urlParams = new URLSearchParams(queryString);
-        var message = urlParams.get("message");
+        var viewMode = urlParams.get("view");
 
-        var dedicationMessageElement = document.getElementById("dedicationMessage");
-        dedicationMessageElement.textContent = message.toUpperCase();
+        if (viewMode === "shared") {
+            document.getElementById("openImageInput").style.display = "none";
+            document.getElementById("shareButton").style.display = "none";
+		    document.getElementById("createCardButton").style.display = "block";
+
+        }
 
         function loadImage(input) {
             const imageContainer = document.getElementById('imageContainer');
@@ -137,8 +211,52 @@
             imageContainer.innerHTML = '';
             imageContainer.appendChild(image);
         }
+		
+		function getParameterByName(name, url) {
+        if (!url) url = window.location.href;
+        name = name.replace(/[\[\]]/g, '\\$&');
+        var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+            results = regex.exec(url);
+        if (!results) return null;
+        if (!results[2]) return '';
+        return decodeURIComponent(results[2].replace(/\+/g, ' '));
+    }
+
+    // Usa la funzione per ottenere il messaggio dall'URL
+    var message = getParameterByName('message');
+
+    // Inserisci il messaggio nel DOM
+    if (message) {
+        document.getElementById('dedicationMessage').textContent = message;
+    }
+
+        document.getElementById("shareButton").addEventListener("click", function() {
+            var currentPageUrl = window.location.href;
+            var sharedLink = currentPageUrl.includes("?") ? currentPageUrl + "&view=shared" : currentPageUrl + "?view=shared";
+
+            if (navigator.share) {
+                navigator.share({
+                    url: sharedLink
+                }).then(() => {
+                    console.log("Condivisione riuscita");
+                }).catch((error) => {
+                    console.error("Errore nella condivisione:", error);
+                });
+            } else {
+                var copyInput = document.createElement("input");
+                copyInput.setAttribute("type", "text");
+                copyInput.setAttribute("value", sharedLink);
+                document.body.appendChild(copyInput);
+                copyInput.select();
+                document.execCommand("copy");
+                document.body.removeChild(copyInput);
+                alert("Il link è stato copiato negli appunti: " + sharedLink);
+            }
+        });
+		
     </script>
 </body>
+
 </html>
 
 
