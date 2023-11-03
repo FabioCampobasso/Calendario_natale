@@ -26,16 +26,35 @@
             background-color:  #ece8df;
         }
 		
-iframe {
- 
-    border-radius: 50px;
-    position: absolute;  /* Cambia da absolute a fixed */
-	top:31%;
-    z-index: 1;   /* Aumenta il valore di z-index per assicurarti che sia sopra gli altri elementi */
-  
-	scale: 170%;
-   
-}
+ #spoticontainer {
+            position: absolute;
+			left: center;
+            width: 600px; /* Adatta come necessario */
+            height: 210px; /* Adatta come necessario */
+          
+            overflow: hidden; /* Nascondi eventuali elementi che escono dal container */
+        }
+
+        #spoticontainer img {
+            position: absolute;
+            top: center; /* Modifica per spostare verticalmente */
+            left: center; /* Modifica per spostare orizzontalmente */
+            width: 600px; /* Adatta la dimensione come desiderato */
+   opacity: 1;
+   pointer-events: none;
+        }
+
+        #spoticontainer iframe {
+		 position: absolute;
+		 top: 5px;
+		 left: -95px;
+            width: 100;
+            height: 200;
+            border-radius: 12px;
+			z-index:1px;
+			scale: 150%;
+			  
+        }
 
         .container {
             width: 1080px;
@@ -176,7 +195,11 @@ iframe {
         <img src="biglietto.png" alt="Biglietto">
 
         <p id="dedicationMessage"></p>
-<iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/77nF1t4qesuOJRd8lbIzNX?utm_source=generator" width="38%" height="100" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>            
+<div id="spoticontainer">
+        
+        <iframe src="https://open.spotify.com/embed/track/5ip1FIfC7crfMQEQHQ8dOI?utm_source=generator" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+    <img src="player.png" alt="Descrizione Immagine">
+	</div>         
         <button id="openImageInput">INSERISCI FOTO</button>
         <button id="shareButton">CONDIVIDI</button>
         <button id="createCardButton" style="display: none;" onclick="window.location.href='https://fabiocampobasso.github.io/Calendario_natale/'">CREA IL TUO BIGLIETTO</button>

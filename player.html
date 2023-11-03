@@ -3,8 +3,7 @@
 
 <head>
 <script src="https://sdk.scdn.co/spotify-player.js"></script>
-
-    <title>Lettore Spotify Personalizzato</title>
+<title>Lettore Spotify Personalizzato</title>
 	   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700&display=swap">
 	    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:italic" rel="stylesheet">
 <style>
@@ -41,7 +40,7 @@ body {
     top: 15px;
     left: 38%; /* Posizionato poco più a destra dell'immagine */
     text-decoration: none;
-    font-size: 23px;
+    font-size: 25px;
     font-family: 'Roboto Condensed', sans-serif;
     font-weight: bold;
     color: #bf3630;
@@ -49,14 +48,13 @@ body {
 
 #trackInfo {
     position: absolute;
-    top: 40px; /* Adattare in base alle esigenze */
+    top: 45px; /* Adattare in base alle esigenze */
     left: 38%;
-	
-    color: #bf3630;
+	    color: #bf3630;
     font-weight: 0;
   font-family: 'Roboto Condensed', sans-serif;
             font-style: italic;
-    font-size: 17px;
+    font-size: 18px;
 }
 
 .button-container {
@@ -127,6 +125,7 @@ body {
 <script>
     const CLIENT_ID = '565ad99448374a88ba05eec7f08543e6';
     const CLIENT_SECRET = '23cd47f5616942c49853a234276529e4';
+const SCOPES = ['streaming', 'user-read-birthdate', 'user-read-email', 'user-read-private'].join(' ');
 
     let player; 
     let device_id;
