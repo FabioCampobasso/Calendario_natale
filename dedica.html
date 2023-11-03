@@ -26,24 +26,13 @@
             background-color:  #ece8df;
         }
 		
-		.spotify-cover {
-    position: absolute;
-    top: 30%; /* la stessa posizione top dell'iframe */
-    width: 380px; 
-    height: 100px; 
-    z-index: 2; /* Questo pone l'immagine sopra l'iframe */
-    border-radius: 12px; /* Lo stesso bordo arrotondato dell'iframe */
-		scale: 190%;
-		
-    pointer-events: none;
-}
 
 
 iframe {
  
     border-radius: 50px;
     position: absolute;  /* Cambia da absolute a fixed */
-	top:31%;
+	top:30%;
     z-index: 1;   /* Aumenta il valore di z-index per assicurarti che sia sopra gli altri elementi */
   
 	scale: 170%;
@@ -65,11 +54,11 @@ iframe {
             font-style: italic;
             text-align: center;
             font-weight: 600;
-            font-size: 48px;
+            font-size: 55px;
             color: #508a8c;
             text-transform: uppercase;
             position: absolute;
-            top: 36%;
+            top: 40%;
             left: 50%;
             transform: translateX(-50%);
             white-space: pre-line;
@@ -89,7 +78,7 @@ iframe {
             border-radius: 50px;
             font-weight: bold;
             position: absolute;
-            top: 81%;
+            top: 84%;
              left: 31%;
             transform: translateX(-50%);
 			box-shadow: -10px 10px 0px 0 rgba(0, 0, 0, 0.2); 
@@ -124,7 +113,7 @@ iframe {
             border-radius: 50px;
             font-weight: bold;
             position: absolute;
-            top: 76%;
+            top: 79%;
             left: 31%;
             transform: translateX(-50%);
 			
@@ -188,8 +177,8 @@ iframe {
     <div class="container">
         <img src="biglietto.png" alt="Biglietto">
         <p id="dedicationMessage"></p>
-		<img src="player.png" alt="Cover Spotify" class="spotify-cover">
-<iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/77nF1t4qesuOJRd8lbIzNX?utm_source=generator" width="380" height="100" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>            
+
+<iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/0bYg9bo50gSsH3LtXe2SQn?utm_source=generator" width="320" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>            
         <button id="openImageInput">INSERISCI FOTO</button>
         <button id="shareButton">CONDIVIDI</button>
         <button id="createCardButton" style="display: none;" onclick="window.location.href='https://fabiocampobasso.github.io/Calendario_natale/'">CREA IL TUO BIGLIETTO</button>

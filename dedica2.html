@@ -188,7 +188,7 @@ iframe {
     <div class="container">
         <img src="biglietto.png" alt="Biglietto">
         <p id="dedicationMessage"></p>
-		<img src="player.png" alt="Cover Spotify" class="spotify-cover">
+		<img src="player1.png" alt="Cover Spotify" class="spotify-cover">
 <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/5ip1FIfC7crfMQEQHQ8dOI?utm_source=generator" width="380" height="100" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
          
         <button id="openImageInput">INSERISCI FOTO</button>
@@ -267,6 +267,23 @@ iframe {
                 alert("Il link è stato copiato negli appunti: " + sharedLink);
             }
         });
+		
+
+var iframe = document.querySelector('iframe');
+iframe.addEventListener('click', function() {
+    var spotifyCover = document.querySelector('.spotify-cover');
+    if (!isImageChanged) {
+        // Cambia l'immagine del player con una nuova
+        spotifyCover.src = 'player1_2.png'; // Indica l'URL della nuova immagine
+        isImageChanged = true;
+    } else {
+        // Reimposta l'immagine a quella originale
+        spotifyCover.src = 'player1.png'; // Indica l'URL dell'immagine originale
+        isImageChanged = false;
+    }
+});
+
+
 		
     </script>
 </body>
