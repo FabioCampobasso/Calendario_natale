@@ -26,14 +26,28 @@
             background-color:  #ece8df;
         }
 		
+		.spotify-cover {
+    position: absolute;
+    top: 30%; /* la stessa posizione top dell'iframe */
+    width: 380px; 
+    height: 100px; 
+    z-index: 2; /* Questo pone l'immagine sopra l'iframe */
+    border-radius: 12px; /* Lo stesso bordo arrotondato dell'iframe */
+		scale: 190%;
+		
+    pointer-events: none;
+}
+
+
 iframe {
-    position: fixed;  /* Rende il player fisso */
-    top: 0;  /* Posiziona il player in cima alla pagina */
-    left: 0;  /* Posiziona il player all'inizio della pagina */
-    width: 100%;  /* Larghezza al 100% */
-    height: 80px;  /* Puoi regolare l'altezza come desideri */
-    border-radius: 0;  /* Rendi i bordi piatti */
-    z-index: 1000;  /* Assicurati che il player sia sopra gli altri elementi */
+ 
+    border-radius: 50px;
+    position: absolute;  /* Cambia da absolute a fixed */
+	top:31%;
+    z-index: 1;   /* Aumenta il valore di z-index per assicurarti che sia sopra gli altri elementi */
+  
+	scale: 170%;
+   
 }
 
         .container {
@@ -172,10 +186,12 @@ iframe {
     <script src="snow.js"></script>
 
     <div class="container">
-        <img src="biglietto2.png" alt="Biglietto">
-
+        <img src="biglietto.png" alt="Biglietto">
         <p id="dedicationMessage"></p>
-<iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/5ip1FIfC7crfMQEQHQ8dOI?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>        <button id="openImageInput">INSERISCI FOTO</button>
+		<img src="player.png" alt="Cover Spotify" class="spotify-cover">
+<iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/5ip1FIfC7crfMQEQHQ8dOI?utm_source=generator" width="380" height="100" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+         
+        <button id="openImageInput">INSERISCI FOTO</button>
         <button id="shareButton">CONDIVIDI</button>
         <button id="createCardButton" style="display: none;" onclick="window.location.href='https://fabiocampobasso.github.io/Calendario_natale/'">CREA IL TUO BIGLIETTO</button>
     </div>
