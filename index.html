@@ -67,6 +67,29 @@ img {
 	
 }
 
+.playlist-container {
+    position: relative;
+}
+
+#specialButton {
+    position: absolute;
+    top: 70%; 
+    left: 50%;
+    transform: translate(-50%, -50%);  /* Centra il bottone sull'immagine */
+    z-index: 30;  /* Un valore più alto dell'immagine per assicurarti che sia sopra */
+    background-color: #63b0b3;
+    color: #fff;   /* Colore del testo */
+    padding: 20px 30px;
+    border-radius: 50px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: 40px;
+    text-decoration: none;  /* Rimuove il sottolineamento dal link */
+    display: inline-block;  /* Permette l'uso di padding e altre proprietà */
+    transition: background-color 0.3s;
+}
+
+
     </style>
 </head>
 <body>
@@ -82,7 +105,12 @@ img {
     <img id="link5" src="5.png" alt="Immagine 5">
     <img id="link6" src="6.png" alt="Immagine 6">
 	<img id="link7" src="7.png" alt="Immagine 7">
-	<img id="link8" src="8.png" alt="Immagine 8">
+	<div class="playlist-container">
+    <img id="link8" src="8.png" alt="Immagine 8">
+    <a href="https://open.spotify.com/intl-it/album/2ojsnLAKwDMT0k3sU0ur0x?si=ziYdS2EMRKGezEy_brAJvQ" id="specialButton">ASCOLTA LA PLAYLIST</a>
+</div>
+
+
 </div>
 
 <script>
