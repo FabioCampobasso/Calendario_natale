@@ -105,39 +105,31 @@ body {
     background-size: cover;
 }
 
-</style>
+    </style>
 </head>
 
 <body>
 
 <div class="player">
-    <img src="vinile.png" alt="Immagine traccia"> <!-- Immagine quadrata -->
+    <img src="vinile.png" alt="Immagine traccia">
+    <a id="trackLink" href="https://open.spotify.com/intl-it/track/5ip1FIfC7crfMQEQHQ8dOI?si=5323583fd0c54ea8" target="_blank"> Nome Artista</a>
 
-    <a id="trackLink" href="https://open.spotify.com/intl-it/track/5ip1FIfC7crfMQEQHQ8dOI?si=5323583fd0c54ea8" target="_blank">
-        LA CANZONE DI NATALE
-    </a>
-
-    <div id="trackInfo">Informazioni sulla traccia</div>
-
-    <!-- Container dei bottoni -->
+    <div id="trackInfo">Nome Canzone</div>
     <div class="button-container">
         <button id="previousButton"></button>
         <button id="playButton"></button>
         <button id="nextButton"></button>
     </div>
-    
     <div id="spotifyLogo"></div>
 </div>
-
-
-    <script
-	<!-- ... (il tuo codice HTML rimane invariato) ... -->
 
 <script>
     const CLIENT_ID = '565ad99448374a88ba05eec7f08543e6';
     const CLIENT_SECRET = '23cd47f5616942c49853a234276529e4';
 
-    // Ottieni un token di accesso da Spotify
+    let player; 
+    let device_id;
+
     async function getAccessToken() {
         const response = await fetch('https://accounts.spotify.com/api/token', {
             method: 'POST',
@@ -152,41 +144,56 @@ body {
         return data.access_token;
     }
 
-    // Endpoint per recuperare le informazioni sulla traccia
-    const trackId = '5ip1FIfC7crfMQEQHQ8dOI?si=06f6ef5f656b432b'; // Ho rimosso il '?si=...' alla fine, non è parte dell'ID effettivo della traccia.
-    let trackEndpoint = `https://api.spotify.com/v1/tracks/${trackId}`;
+    const trackId = '5ip1FIfC7crfMQEQHQ8dOI';
 
-    // Recupera le informazioni sulla traccia
     async function getTrackInfo(accessToken) {
-        const response = await fetch(trackEndpoint, {
+        const response = await fetch(`https://api.spotify.com/v1/tracks/${trackId}`, {
             headers: {
                 'Authorization': `Bearer ${accessToken}`
             }
         });
         const data = await response.json();
-        document.getElementById('trackInfo').innerText = `${data.name} by ${data.artists[0].name}`;
+       document.getElementById('trackLink').innerText = `${data.artists[0].name}`;
+        document.getElementById('trackLink').href = `${data.artists[0].external_urls.spotify}`;
+        document.getElementById('trackInfo').innerText = `${data.name}`;
     }
 
-    // Event listeners per i bottoni
+    window.onSpotifyWebPlaybackSDKReady = () => {
+        getAccessToken().then(token => {
+            player = new Spotify.Player({
+                name: 'Web Playback SDK Template',
+                getOAuthToken: cb => { cb(token); }
+            });
+
+            player.addListener('ready', ({ device_id: deviceId }) => {
+                console.log('Ready with Device ID', deviceId);
+                device_id = deviceId;
+            });
+
+            player.connect();
+        });
+    };
+
     document.getElementById('playButton').addEventListener('click', () => {
-        // Qui puoi aggiungere la logica per riprodurre la traccia
+        getAccessToken().then(token => {
+            fetch(`https://api.spotify.com/v1/me/player/play?device_id=${device_id}`, {
+                method: 'PUT',
+                body: JSON.stringify({ uris: [`spotify:track:${trackId}`] }),
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                },
+            });
+        });
     });
 
-    // Nota: Non ho visto un bottone 'pauseButton' nel tuo codice HTML, ma ho lasciato questo qui nel caso tu voglia aggiungerlo.
-    document.getElementById('pauseButton').addEventListener('click', () => {
-        // Qui puoi aggiungere la logica per mettere in pausa la traccia
-    });
-
-    // Inizializza
     async function init() {
         const accessToken = await getAccessToken();
         getTrackInfo(accessToken);
     }
 
-    init(); // Chiamata alla funzione init per avviare tutto
+    init();
 </script>
-
-	</script>
 </body>
-
 </html>
+
