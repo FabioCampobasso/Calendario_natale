@@ -40,8 +40,8 @@ img {
 
 #link0 {
     position: absolute;
-    top: 12%;
-    left: center;
+    top: 5%;
+    left: 1%;
     z-index: 5;
    	
 }
@@ -74,20 +74,33 @@ img {
 #specialButton {
     position: absolute;
     top: 70%; 
-    left: 50%;
+    left: 78%;
     transform: translate(-50%, -50%);  /* Centra il bottone sull'immagine */
     z-index: 30;  /* Un valore più alto dell'immagine per assicurarti che sia sopra */
     background-color: #63b0b3;
     color: #fff;   /* Colore del testo */
     padding: 20px 40px;
-    border-radius: 50px;
+    border-radius: 80px;
     font-family: 'Roboto', sans-serif;
     font-weight: 500;
     font-size: 37px;
     text-decoration: none;  /* Rimuove il sottolineamento dal link */
     display: inline-block;  /* Permette l'uso di padding e altre proprietà */
     transition: background-color 0.3s;
+    text-align: center;  /* Allinea il testo al centro */
+    white-space: nowrap;  /* Permette al testo di andare a capo */
 }
+
+#specialButton .line1 {
+    font-size: 30px;
+    color: #fff; /* ad esempio, un rosso */
+}
+
+#specialButton .line2 {
+    font-size: 40px;
+    color: #fff; /* ad esempio, un verde */
+}
+
 
 
     </style>
@@ -107,7 +120,10 @@ img {
 	<img id="link7" src="7.png" alt="Immagine 7">
 	<div class="playlist-container">
     <img id="link8" src="8.png" alt="Immagine 8">
-    <a href="https://open.spotify.com/intl-it/album/2ojsnLAKwDMT0k3sU0ur0x?si=ziYdS2EMRKGezEy_brAJvQ" id="specialButton">ASCOLTA LA PLAYLIST</a>
+<a href="https://open.spotify.com/intl-it/album/2ojsnLAKwDMT0k3sU0ur0x?si=ziYdS2EMRKGezEy_brAJvQ" id="specialButton">
+    <span class="line1">ASCOLTA</span><br>
+    <span class="line2">LA PLAYLIST</span>
+</a>
 </div>
 
 
