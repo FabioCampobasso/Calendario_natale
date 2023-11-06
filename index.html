@@ -11,21 +11,22 @@
     box-sizing: border-box;
 }
 
-body {
-    background-color: #63b0b3;
-    overflow-x: hidden; /* Nasconde l'overflow orizzontale */
-}
+        body {
+            background-color: #63b0b3;
+            overflow: auto; /* Cambiato da overflow-x: hidden */
+        }
 
-#container {
-    position: relative;
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    overflow-y: auto; 
-    overflow-x: hidden; /* Assicurati che non ci sia overflow orizzontale */
-}
+        #container {
+            position: relative; /* Cambiato da position: absolute */
+            width: 100vw;
+            min-height: 100vh; /* Aggiunto min-height */
+            padding-bottom: 20px; /* Spazio in fondo per evitare problemi di scorrimento */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow-x: hidden;
+            overflow-y: auto;
+        }
 
 
 img {
