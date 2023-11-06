@@ -41,7 +41,7 @@ img {
 #link0 {
     position: absolute;
     top: 5%;
-    left: 1%;
+    left: 0%;
     z-index: 5;
    	
 }
@@ -142,10 +142,21 @@ img {
     
 	
 	function checkMaxLength(textarea) {
-    if (textarea.value.length > 44) {
-        textarea.value = textarea.value.substring(0, 44);
+    if (textarea.value.length > 45) {
+        textarea.value = textarea.value.substring(0, 45);
     }
 }
+document.getElementById("messageInput").addEventListener("input", function() {
+    // Fai in modo che la prima lettera sia maiuscola
+    if (this.value.length === 1) {
+        this.value = this.value.toUpperCase();
+    }
+});
+
+document.getElementById("messageInput").addEventListener("focus", function() {
+    // Rimuovi il segnaposto al primo clic
+    this.placeholder = "";
+});
 
     function imageClickHandler(imageId, link) {
         var allImages = document.querySelectorAll("img");

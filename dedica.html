@@ -68,22 +68,6 @@ iframe {
             position: relative;
         }
 
-        #dedicationMessage {
-            font-family: 'Roboto Condensed', sans-serif;
-            font-style: italic;
-            text-align: center;
-            font-weight: bold;
-            font-size: 63px;
-            color: #508a8c;
-            position: absolute;
-            top: 39%;
-            left: 50%;
-            transform: translateX(-50%);
-            white-space: pre-line;
-            overflow-wrap: break-word;
-            width: 600px;
-			line-height: 1.1;
-        }
 		
 
         #shareButton {
@@ -160,7 +144,7 @@ iframe {
             max-height: 100%;
             width: auto;
             height: 100%;
-            scale: 103%;
+            scale: 106%;
             display: block;
             margin: 0 auto;
             overflow: hidden;
@@ -168,6 +152,30 @@ iframe {
 
         #snow-container {
             pointer-events: none;
+        }
+		
+	  #dedicationMessage {
+            font-family: 'Roboto Condensed', sans-serif;
+            font-style: italic;
+            text-align: center;
+            font-weight: bold;
+            font-size: 63px;
+            color: #508a8c;
+            position: absolute;
+            top: 39%;
+            left: 50%;
+            transform: translateX(-50%);
+            white-space: pre-line;
+            overflow-wrap: break-word;
+            width: 600px;
+			line-height: 1.1;
+			    max-height: calc(63px * 2 * 1.1); /* font-size moltiplicato per 2 righe e poi per line-height */
+    overflow: hidden; /* Nasconde qualsiasi contenuto che supera max-height */
+    display: flex; 
+    align-items: center; /* Allinea verticalmente al centro */
+    justify-content: center; /* Allinea orizzontalmente al centro */
+    height: calc(63px * 2 * 1.1); /* Imposta l'altezza per allineare al centro */
+
         }
    
     </style>
