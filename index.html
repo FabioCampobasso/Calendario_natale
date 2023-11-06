@@ -5,7 +5,7 @@
     <link rel="stylesheet" type="text/css" href="styles.css">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700&display=swap">
     <style>
-    * {
+  * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -13,7 +13,7 @@
 
 body {
     background-color: #63b0b3;
-    overflow: hidden;
+    overflow-x: hidden; /* Nasconde l'overflow orizzontale */
 }
 
 #container {
@@ -23,7 +23,8 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    overflow-y: auto; /* Aggiunto */
+    overflow-y: auto; 
+    overflow-x: hidden; /* Assicurati che non ci sia overflow orizzontale */
 }
 
 
@@ -42,8 +43,7 @@ img {
     top: 12%;
     left: center;
     z-index: 5;
-    transform: scale(0.8);
-	
+   	
 }
 
 
