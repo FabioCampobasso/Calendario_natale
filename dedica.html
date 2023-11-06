@@ -206,33 +206,16 @@ iframe {
 
 
 
-    <script>
- document.getElementById("openImageInput").addEventListener("click", function() {
-            document.getElementById("imageInput").click();
-            // Hide the "INSERISCI FOTO" button once it's clicked
-            this.style.display = "none";
-        });
+ <script>
+    // Event Listener per aprire l'input dell'immagine
+    document.getElementById("openImageInput").addEventListener("click", function() {
+        document.getElementById("imageInput").click();
+        // Nascondi il pulsante "INSERISCI FOTO" una volta che viene cliccato
+        this.style.display = "none";
+    });
 
-        var queryString = window.location.search;
-        var urlParams = new URLSearchParams(queryString);
-        var viewMode = urlParams.get("view");
-
-        if (viewMode === "shared") {
-            document.getElementById("openImageInput").style.display = "none";
-            document.getElementById("shareButton").style.display = "none";
-		    document.getElementById("createCardButton").style.display = "block";
-
-        }
-
-        function loadImage(input) {
-            const imageContainer = document.getElementById('imageContainer');
-            const image = document.createElement('img');
-            image.src = URL.createObjectURL(input.files[0]);
-            imageContainer.innerHTML = '';
-            imageContainer.appendChild(image);
-        }
-		
-		function getParameterByName(name, url) {
+    // Funzione per ottenere i parametri dall'URL
+    function getParameterByName(name, url) {
         if (!url) url = window.location.href;
         name = name.replace(/[\[\]]/g, '\\$&');
         var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
@@ -242,72 +225,88 @@ iframe {
         return decodeURIComponent(results[2].replace(/\+/g, ' '));
     }
 
-    // Usa la funzione per ottenere il messaggio dall'URL
-    var message = getParameterByName('message');
+    var queryString = window.location.search;
+    var urlParams = new URLSearchParams(queryString);
+    var viewMode = urlParams.get("view");
+    var base64Image = urlParams.get('image');
 
-    // Inserisci il messaggio nel DOM
+    // Se è in modalità condivisa, nascondi/visualizza i bottoni appropriati
+    if (viewMode === "shared") {
+        document.getElementById("openImageInput").style.display = "none";
+        document.getElementById("shareButton").style.display = "none";
+        document.getElementById("createCardButton").style.display = "block";
+
+        // Se c'è un'immagine in Base64, visualizzala
+        if (base64Image) {
+            var img = document.createElement('img');
+            img.src = base64Image;
+            document.getElementById('imageContainer').appendChild(img);
+        }
+    }
+
+    // Funzione per caricare l'immagine quando viene selezionata
+    function loadImage(input) {
+        const imageContainer = document.getElementById('imageContainer');
+        const image = document.createElement('img');
+        image.src = URL.createObjectURL(input.files[0]);
+        imageContainer.innerHTML = '';
+        imageContainer.appendChild(image);
+    }
+
+    // Ottieni la stringa Base64 dell'immagine
+    function getBase64(file, callback) {
+        var reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = function () {
+            callback(reader.result);
+        };
+        reader.onerror = function (error) {
+            console.log('Errore:', error);
+        };
+    }
+
+    var input = document.getElementById('imageInput');
+    input.addEventListener('change', function() {
+        if (this.files && this.files[0]) {
+            getBase64(this.files[0], function(encodedImage) {
+                base64Image = encodedImage;
+            });
+        }
+    });
+
+    // Condividi il link
+    document.getElementById("shareButton").addEventListener("click", function() {
+        var currentPageUrl = window.location.href.split('?')[0];  // Rimuove eventuali parametri già presenti
+        var sharedLink = currentPageUrl + "?view=shared&image=" + encodeURIComponent(base64Image);
+
+        if (navigator.share) {
+            navigator.share({
+                url: sharedLink
+            }).then(() => {
+                console.log("Condivisione riuscita");
+            }).catch((error) => {
+                console.error("Errore nella condivisione:", error);
+            });
+        } else {
+            var copyInput = document.createElement("input");
+            copyInput.setAttribute("type", "text");
+            copyInput.setAttribute("value", sharedLink);
+            document.body.appendChild(copyInput);
+            copyInput.select();
+            document.execCommand("copy");
+            document.body.removeChild(copyInput);
+            alert("Il link è stato copiato negli appunti: " + sharedLink);
+        }
+    });
+
+    // Inserisci il messaggio nel DOM se esiste
+    var message = getParameterByName('message');
     if (message) {
         document.getElementById('dedicationMessage').textContent = message;
     }
 
-        document.getElementById("shareButton").addEventListener("click", function() {
-            var currentPageUrl = window.location.href;
-            var sharedLink = currentPageUrl.includes("?") ? currentPageUrl + "&view=shared" : currentPageUrl + "?view=shared";
+</script>
 
-            if (navigator.share) {
-                navigator.share({
-                    url: sharedLink
-                }).then(() => {
-                    console.log("Condivisione riuscita");
-                }).catch((error) => {
-                    console.error("Errore nella condivisione:", error);
-                });
-            } else {
-                var copyInput = document.createElement("input");
-                copyInput.setAttribute("type", "text");
-                copyInput.setAttribute("value", sharedLink);
-                document.body.appendChild(copyInput);
-                copyInput.select();
-                document.execCommand("copy");
-                document.body.removeChild(copyInput);
-                alert("Il link è stato copiato negli appunti: " + sharedLink);
-            }
-        });
-		
-		function getBase64(file) {
-   var reader = new FileReader();
-   reader.readAsDataURL(file);
-   reader.onload = function () {
-     console.log(reader.result);
-   };
-   reader.onerror = function (error) {
-     console.log('Errore:', error);
-   };
-}
-
-// Uso:
-// Supponiamo che "input" sia l'elemento di input del file
-var input = document.getElementById('imageInput');
-input.addEventListener('change', function() {
-    if (this.files && this.files[0]) {
-        getBase64(this.files[0]);
-    }
-});
-
-var base64Image = /* ottieni la stringa Base64 come spiegato sopra */;
-var sharedLink = "https://tuo-sito.com/pagina-condivisa.html?image=" + encodeURIComponent(base64Image);
-
-var queryString = window.location.search;
-var urlParams = new URLSearchParams(queryString);
-var base64Image = urlParams.get('image');
-
-if (base64Image) {
-    var img = document.createElement('img');
-    img.src = base64Image;
-    document.body.appendChild(img);  // O aggiungilo dove preferisci nel tuo DOM
-}
-
-    </script>
 </body>
 
 </html>
