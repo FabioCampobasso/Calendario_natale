@@ -74,21 +74,22 @@ img {
 #specialButton {
     position: absolute;
     top: 70%; 
-    left: 78%;
+    left: 76%;
     transform: translate(-50%, -50%);  /* Centra il bottone sull'immagine */
     z-index: 30;  /* Un valore più alto dell'immagine per assicurarti che sia sopra */
-    background-color: #63b0b3;
+    background-color: #ff0b00;
     color: #fff;   /* Colore del testo */
-    padding: 20px 40px;
+    padding: 10px 85px;
     border-radius: 80px;
     font-family: 'Roboto', sans-serif;
-    font-weight: 500;
+    font-weight: 800;
     font-size: 37px;
     text-decoration: none;  /* Rimuove il sottolineamento dal link */
     display: inline-block;  /* Permette l'uso di padding e altre proprietà */
     transition: background-color 0.3s;
     text-align: center;  /* Allinea il testo al centro */
     white-space: nowrap;  /* Permette al testo di andare a capo */
+	line-height: 1;
 }
 
 #specialButton .line1 {
@@ -109,7 +110,8 @@ img {
 
 <div id="container">
     <textarea id="messageInput" rows="1" maxlength="44" placeholder="Scrivi la tua dedica" oninput="autoResize(this); checkMaxLength(this);"></textarea>
-    <img id="testata" src="testata.png" alt="Immagine 5">
+	<img id="fiocchi" src="fiocchi.png" alt="Immagine 00">
+    <img id="testata" src="testata.png" alt="Immagine 01">
     <img id="link0" src="vinile.png" alt="Immagine 0">
     <img id="link1" src="1.png" alt="Immagine 1">
     <img id="link2" src="2.png" alt="Immagine 2">
@@ -121,8 +123,8 @@ img {
 	<div class="playlist-container">
     <img id="link8" src="8.png" alt="Immagine 8">
 <a href="https://open.spotify.com/intl-it/album/2ojsnLAKwDMT0k3sU0ur0x?si=ziYdS2EMRKGezEy_brAJvQ" id="specialButton">
-    <span class="line1">ASCOLTA</span><br>
-    <span class="line2">LA PLAYLIST</span>
+    <span class="line1">ASCOLTA LA</span><br>
+    <span class="line2">PLAYLIST</span>
 </a>
 </div>
 
