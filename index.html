@@ -140,16 +140,44 @@ img {
     var link6 = "dedica.html";
     var link7 = "dedica.html";
     
-	
-	function checkMaxLength(textarea) {
-    if (textarea.value.length > 45) {
-        textarea.value = textarea.value.substring(0, 45);
+function checkSecondLine(textarea) {
+    var lines = textarea.value.split('\n');
+    
+    // Controlla se ci sono più di due righe e, in tal caso, tronca al secondo ritorno a capo.
+    if (lines.length > 2) {
+        textarea.value = lines.slice(0, 2).join('\n');
+    }
+    
+    // Se l'utente sta scrivendo sulla seconda riga e il testo supera 24 caratteri, tronca il testo.
+    if (lines.length === 2 && lines[1].length > 24) {
+        lines[1] = lines[1].substr(0, 24);
+        textarea.value = lines.join('\n');
     }
 }
+
+function checkMaxLength(textarea) {
+    if (textarea.value.length > 44) {  
+        textarea.value = textarea.value.substring(0, 44);
+    }
+}
+
 document.getElementById("messageInput").addEventListener("input", function() {
+    checkSecondLine(this);
+    checkMaxLength(this);
+
     // Fai in modo che la prima lettera sia maiuscola
     if (this.value.length === 1) {
         this.value = this.value.toUpperCase();
+    }
+});
+
+document.getElementById("messageInput").addEventListener("keydown", function(event) {
+    var lines = this.value.split('\n');
+    if (event.key === "Enter" && lines.length >= 2) {
+        event.preventDefault();
+    }
+    if (event.key !== "Backspace" && event.key !== "Delete" && lines.length === 2 && lines[1].length >= 24) {
+        event.preventDefault();
     }
 });
 
@@ -157,6 +185,7 @@ document.getElementById("messageInput").addEventListener("focus", function() {
     // Rimuovi il segnaposto al primo clic
     this.placeholder = "";
 });
+
 
     function imageClickHandler(imageId, link) {
         var allImages = document.querySelectorAll("img");
