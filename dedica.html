@@ -181,6 +181,9 @@ iframe {
     <div class="container">
         <img src="biglietto.png" alt="Biglietto">
         <p id="dedicationMessage"></p>
+		    <div id="imageContainer" class="custom-image-container">
+        <input type="file" accept="image/*" id="imageInput" onchange="loadImage(this)">
+    </div>
 		
 		<div class="iframe-wrapper">
 <a href="https://open.spotify.com/track/0bYg9bo50gSsH3LtXe2SQn?context=spotify:playlist:4DOsjTjwW4ZVJiDKs075cI" target="_blank">
@@ -193,9 +196,7 @@ iframe {
         <button id="createCardButton" style="display: none;" onclick="window.location.href='https://fabiocampobasso.github.io/Calendario_natale/'">CREA IL TUO BIGLIETTO</button>
     </div>
 
-    <div id="imageContainer" class="custom-image-container">
-        <input type="file" accept="image/*" id="imageInput" onchange="loadImage(this)">
-    </div>
+
 
     <script>
  document.getElementById("openImageInput").addEventListener("click", function() {
