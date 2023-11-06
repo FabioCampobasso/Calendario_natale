@@ -167,7 +167,7 @@ iframe {
             transform: translateX(-50%);
             white-space: pre-line;
             overflow-wrap: break-word;
-            width: 800px;
+            width: 700px;
 			line-height: 1.1;
 			    max-height: calc(63px * 2 * 1.1); /* font-size moltiplicato per 2 righe e poi per line-height */
     overflow: hidden; /* Nasconde qualsiasi contenuto che supera max-height */
@@ -274,6 +274,39 @@ iframe {
             }
         });
 		
+		function getBase64(file) {
+   var reader = new FileReader();
+   reader.readAsDataURL(file);
+   reader.onload = function () {
+     console.log(reader.result);
+   };
+   reader.onerror = function (error) {
+     console.log('Errore:', error);
+   };
+}
+
+// Uso:
+// Supponiamo che "input" sia l'elemento di input del file
+var input = document.getElementById('imageInput');
+input.addEventListener('change', function() {
+    if (this.files && this.files[0]) {
+        getBase64(this.files[0]);
+    }
+});
+
+var base64Image = /* ottieni la stringa Base64 come spiegato sopra */;
+var sharedLink = "https://tuo-sito.com/pagina-condivisa.html?image=" + encodeURIComponent(base64Image);
+
+var queryString = window.location.search;
+var urlParams = new URLSearchParams(queryString);
+var base64Image = urlParams.get('image');
+
+if (base64Image) {
+    var img = document.createElement('img');
+    img.src = base64Image;
+    document.body.appendChild(img);  // O aggiungilo dove preferisci nel tuo DOM
+}
+
     </script>
 </body>
 
