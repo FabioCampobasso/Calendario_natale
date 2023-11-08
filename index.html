@@ -37,6 +37,7 @@ img {
 #testata {
     position: relative;
     z-index: 10;
+	
 }
 
 #link0 {
@@ -123,7 +124,7 @@ img {
 	<img id="link7" src="7.png" alt="Immagine 7">
 	<div class="playlist-container">
     <img id="link8" src="8.png" alt="Immagine 8">
-<a href="https://open.spotify.com/intl-it/album/2ojsnLAKwDMT0k3sU0ur0x?si=ziYdS2EMRKGezEy_brAJvQ" id="specialButton">
+<a href="https://open.spotify.com/playlist/4DOsjTjwW4ZVJiDKs075cI?si=ac07e18e023e4b2a" id="specialButton">
     <span class="line1">ASCOLTA LA</span><br>
     <span class="line2">PLAYLIST</span>
 </a>
@@ -141,6 +142,7 @@ img {
     var link6 = "dedica.html";
     var link7 = "dedica.html";
     
+	
 function checkSecondLine(textarea) {
     var lines = textarea.value.split('\n');
     
@@ -235,13 +237,69 @@ document.getElementById("messageInput").addEventListener("focus", function() {
         imageClickHandler("link7", link7);
     });
 	
-
-
-
-    function autoResize(textarea) {
+ function autoResize(textarea) {
         textarea.style.height = 'auto';             // Reset the height
         textarea.style.height = textarea.scrollHeight + 'px';  // Set the height
     }
+	
+let isDragging = false;
+let originX = null;
+let rotationDegrees = 0;
+let lastRotationDegrees = null;
+let vinile = document.getElementById('link0');
+
+// Funzione per avviare il trascinamento
+function startDrag(e) {
+  isDragging = true;
+  originX = e.type.includes('mouse') ? e.pageX : e.touches[0].pageX;
+  e.preventDefault();
+}
+
+// Funzione che si attiva durante il trascinamento
+function doDrag(e) {
+  if (!isDragging) return;
+  let currentPageX = e.type.includes('mouse') ? e.pageX : e.touches[0].pageX;
+  let deltaX = currentPageX - originX;
+  rotationDegrees += deltaX * 0.2;
+
+  vinile.style.transform = `rotate(${rotationDegrees}deg)`;
+  originX = currentPageX;
+  e.preventDefault();
+}
+
+// Funzione per terminare il trascinamento
+function endDrag(e) {
+  if (!isDragging) return;
+  isDragging = false;
+  lastRotationDegrees = rotationDegrees;
+  vinile.style.transform = `rotate(${rotationDegrees}deg)`;
+  e.preventDefault();
+}
+
+// Funzione per avviare la rotazione automatica
+function startAutoRotation() {
+  if (!isDragging) {
+    // Avvia il timer per la rotazione automatica
+    setInterval(() => {
+      rotationDegrees += 1;
+      vinile.style.transform = `rotate(${rotationDegrees}deg)`;
+    }, 15);
+  } else {
+    lastRotationDegrees = rotationDegrees;
+  }
+}
+
+// Aggiunge gli event listener all'immagine del vinile
+vinile.addEventListener('mousedown', startDrag);
+vinile.addEventListener('mousemove', doDrag);
+vinile.addEventListener('mouseup', endDrag);
+vinile.addEventListener('mouseleave', endDrag);
+vinile.addEventListener('touchstart', startDrag);
+vinile.addEventListener('touchmove', doDrag);
+vinile.addEventListener('touchend', endDrag);
+
+// Avvia la rotazione automatica
+startAutoRotation();
 
 </script>
 </body>

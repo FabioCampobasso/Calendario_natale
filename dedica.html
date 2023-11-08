@@ -91,16 +91,16 @@ iframe {
 				        #createCardButton {
 						background-color: #bf3630;
             font-family: 'Roboto Condensed', sans-serif;
-            font-size: 40px; 
+            font-size: 35px; 
             color: #fff;
-            padding: 20px 25px;
+            padding: 20px 20px;
             border: none;
             cursor: pointer;
             border-radius: 50px;
             font-weight: bold;
             position: absolute;
-            top: 81%;
-            left: 34%;
+            top: 84%;
+            left: 31%;
             transform: translateX(-50%);
 			
         }
@@ -177,45 +177,139 @@ iframe {
     height: calc(63px * 2 * 1.1); /* Imposta l'altezza per allineare al centro */
 
         }
+		
+		#listenPlaylistButton {
+   
+    background-color: transparent; /* Colore Spotify */
+    
+	width: 848px;
+	height: 120px;
+    padding: 15px 1px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    position: absolute;
+    top: 4%; /* Posizione in alto nella pagina */
+    left: 50%;
+    transform: translateX(-50%);
+    
+}
+
+
    
     </style>
 
 </head>
 
 <body>
-    <div id="snow-container"></div>
-    <script src="snow.js"></script>
+<div id="snow-container"></div>
+<script src="snow.js"></script>
 
-    <div class="container">
-        <img src="biglietto.png" alt="Biglietto">
-        <p id="dedicationMessage"></p>
-		    <div id="imageContainer" class="custom-image-container">
-        <input type="file" accept="image/*" id="imageInput" onchange="loadImage(this)">
+<div class="container">
+ <button id="listenPlaylistButton" onclick="window.open('https://open.spotify.com/playlist/4DOsjTjwW4ZVJiDKs075cI?si=ac07e18e023e4b2a');"></button>
+    <img src="biglietto.png" alt="Biglietto">
+    <p id="dedicationMessage"></p>
+    <div id="imageContainer" class="custom-image-container">
+        <input type="file" accept="image/*" name="fileToUpload" id="fileToUpload" style="display: none;" onchange="submitForm()">
     </div>
-		
-		<div class="iframe-wrapper">
-<a href="https://open.spotify.com/track/0bYg9bo50gSsH3LtXe2SQn?context=spotify:playlist:4DOsjTjwW4ZVJiDKs075cI" target="_blank">
-    <button id="overlayButton"></button>
-</a>
+
+    <div class="iframe-wrapper">
+        <a href="https://open.spotify.com/track/0bYg9bo50gSsH3LtXe2SQn?context=spotify:playlist:4DOsjTjwW4ZVJiDKs075cI" target="_blank">
+            <button id="overlayButton"></button>
+        </a>
+    </div>
+	
+    
+    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/0bYg9bo50gSsH3LtXe2SQn?utm_source=generator" width="385" height="170" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+    <button id="openImageInput" onclick="document.getElementById('fileToUpload').click();">INSERISCI FOTO</button>
+    <button id="shareButton" onclick="submitForm();">CONDIVIDI</button>
+    <button id="createCardButton" style="display: none;" onclick="window.location.href='https://fabiocampobasso.github.io/Calendario_natale/'">CREA IL TUO BIGLIETTO</button>
 </div>
-<iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/0bYg9bo50gSsH3LtXe2SQn?utm_source=generator" width="385" height="170" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>            
-        <button id="openImageInput">INSERISCI FOTO</button>
-        <button id="shareButton">CONDIVIDI</button>
-        <button id="createCardButton" style="display: none;" onclick="window.location.href='https://fabiocampobasso.github.io/Calendario_natale/'">CREA IL TUO BIGLIETTO</button>
-    </div>
 
 
 
- <script>
-    // Event Listener per aprire l'input dell'immagine
-    document.getElementById("openImageInput").addEventListener("click", function() {
-        document.getElementById("imageInput").click();
-        // Nascondi il pulsante "INSERISCI FOTO" una volta che viene cliccato
-        this.style.display = "none";
-    });
 
-    // Funzione per ottenere i parametri dall'URL
-    function getParameterByName(name, url) {
+    <script>
+	
+var queryString = window.location.search;
+var urlParams = new URLSearchParams(queryString);
+var imageParam = urlParams.get("image");
+
+document.addEventListener("DOMContentLoaded", function() {
+    var queryString = window.location.search;
+    var urlParams = new URLSearchParams(queryString);
+    var viewMode = urlParams.get("view");
+    var shareParam = urlParams.get("share");
+
+    if (shareParam) {
+        // Nascondi i pulsanti se il parametro "share" è presente
+        document.getElementById("openImageInput").style.display = "none";
+        document.getElementById("shareButton").style.display = "none";
+        document.getElementById("createCardButton").style.display = "block";
+    } else if (viewMode === "shared") {
+        // La logica attuale rimane qui
+    }
+
+    // Resto del codice per caricare l'immagine se presente...
+});
+
+	
+	var sharedLink;
+	
+	
+document.getElementById("openImageInput").addEventListener("click", function() {
+    document.getElementById('fileToUpload').click();
+    // Nascondere il pulsante "INSERISCI FOTO" dopo il click.
+    this.style.display = "none";
+});
+
+
+
+
+        function loadImage(input) {
+            const imageContainer = document.getElementById('imageContainer');
+            const image = document.createElement('img');
+            image.src = URL.createObjectURL(input.files[0]);
+            imageContainer.innerHTML = '';
+            imageContainer.appendChild(image);
+        }
+		
+function submitForm() {
+    let form = new FormData();
+    let input = document.getElementById('fileToUpload');
+    form.append('fileToUpload', input.files[0]);
+
+    fetch('upload.php', {
+        method: 'POST',
+        body: form
+    }).then(response => response.text())
+      .then(uniqueImageName => {
+          var currentPageUrl = window.location.origin + window.location.pathname;
+sharedLink = currentPageUrl + "?message=" + message + "&image=" + uniqueImageName;
+sharedLink += "&share=1";
+          // Carica l'immagine nel container dopo averla inviata al server
+          loadImage(input);
+		 
+      });
+}
+
+
+
+
+var queryString = window.location.search;
+var urlParams = new URLSearchParams(queryString);
+var uniqueImageName = urlParams.get("image");
+if (uniqueImageName) {
+    var imagePath = "uploads/" + uniqueImageName;
+    var imageContainer = document.getElementById('imageContainer');
+    var image = document.createElement('img');
+    image.src = imagePath;
+    imageContainer.appendChild(image);
+}
+
+
+		
+		function getParameterByName(name, url) {
         if (!url) url = window.location.href;
         name = name.replace(/[\[\]]/g, '\\$&');
         var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
@@ -225,88 +319,68 @@ iframe {
         return decodeURIComponent(results[2].replace(/\+/g, ' '));
     }
 
-    var queryString = window.location.search;
-    var urlParams = new URLSearchParams(queryString);
-    var viewMode = urlParams.get("view");
-    var base64Image = urlParams.get('image');
-
-    // Se è in modalità condivisa, nascondi/visualizza i bottoni appropriati
-    if (viewMode === "shared") {
-        document.getElementById("openImageInput").style.display = "none";
-        document.getElementById("shareButton").style.display = "none";
-        document.getElementById("createCardButton").style.display = "block";
-
-        // Se c'è un'immagine in Base64, visualizzala
-        if (base64Image) {
-            var img = document.createElement('img');
-            img.src = base64Image;
-            document.getElementById('imageContainer').appendChild(img);
-        }
-    }
-
-    // Funzione per caricare l'immagine quando viene selezionata
-    function loadImage(input) {
-        const imageContainer = document.getElementById('imageContainer');
-        const image = document.createElement('img');
-        image.src = URL.createObjectURL(input.files[0]);
-        imageContainer.innerHTML = '';
-        imageContainer.appendChild(image);
-    }
-
-    // Ottieni la stringa Base64 dell'immagine
-    function getBase64(file, callback) {
-        var reader = new FileReader();
-        reader.readAsDataURL(file);
-        reader.onload = function () {
-            callback(reader.result);
-        };
-        reader.onerror = function (error) {
-            console.log('Errore:', error);
-        };
-    }
-
-    var input = document.getElementById('imageInput');
-    input.addEventListener('change', function() {
-        if (this.files && this.files[0]) {
-            getBase64(this.files[0], function(encodedImage) {
-                base64Image = encodedImage;
-            });
-        }
-    });
-
-    // Condividi il link
-    document.getElementById("shareButton").addEventListener("click", function() {
-        var currentPageUrl = window.location.href.split('?')[0];  // Rimuove eventuali parametri già presenti
-        var sharedLink = currentPageUrl + "?view=shared&image=" + encodeURIComponent(base64Image);
-
-        if (navigator.share) {
-            navigator.share({
-                url: sharedLink
-            }).then(() => {
-                console.log("Condivisione riuscita");
-            }).catch((error) => {
-                console.error("Errore nella condivisione:", error);
-            });
-        } else {
-            var copyInput = document.createElement("input");
-            copyInput.setAttribute("type", "text");
-            copyInput.setAttribute("value", sharedLink);
-            document.body.appendChild(copyInput);
-            copyInput.select();
-            document.execCommand("copy");
-            document.body.removeChild(copyInput);
-            alert("Il link è stato copiato negli appunti: " + sharedLink);
-        }
-    });
-
-    // Inserisci il messaggio nel DOM se esiste
+    // Usa la funzione per ottenere il messaggio dall'URL
     var message = getParameterByName('message');
+
+    // Inserisci il messaggio nel DOM
     if (message) {
         document.getElementById('dedicationMessage').textContent = message;
     }
+	
 
-</script>
+document.getElementById("shareButton").addEventListener("click", function() {
+    // Controllo se esiste un'immagine da condividere
+    var sharedUrl = window.location.href;
+    if (!sharedLink) { // Se non è stata definita una foto da condividere
+        if (sharedUrl.indexOf('?') > -1) { // Se l'URL ha già dei parametri
+            sharedUrl += '&share=true'; // Aggiunge il parametro share
+        } else {
+            sharedUrl += '?share=true'; // Inizia la stringa dei parametri con share
+        }
+    } else {
+        sharedUrl = sharedLink; // Altrimenti usa l'URL della foto
+    }
 
+    if (navigator.share) {
+        navigator.share({
+            title: "Condividi questo link",
+            url: sharedUrl // Utilizza l'URL modificato
+        }).then(() => {
+            console.log("Condivisione riuscita");
+        }).catch((error) => {
+            console.error("Errore nella condivisione:", error);
+        });
+    } else {
+        // Fallback per copia negli appunti
+        var tempInput = document.createElement("input");
+        tempInput.value = sharedUrl; // Utilizza l'URL modificato
+        document.body.appendChild(tempInput);
+        tempInput.select();
+        tempInput.setSelectionRange(0, 99999); // Per dispositivi mobili
+        document.execCommand("copy");
+        document.body.removeChild(tempInput);
+        alert("Il link è stato copiato negli appunti: " + sharedUrl);
+    }
+});
+
+
+
+		
+		var imageId = getParameterByName('imageId');
+if (imageId) {
+    // Carica l'immagine associata all'ID dal server
+    fetch(`getImage.php?id=${imageId}`)
+    .then(response => response.json())
+    .then(data => {
+        const imageContainer = document.getElementById('imageContainer');
+        const image = document.createElement('img');
+        image.src = data.path;  // Usa il percorso dell'immagine restituito dal server
+        imageContainer.innerHTML = '';
+        imageContainer.appendChild(image);
+    });
+}
+		
+    </script>
 </body>
 
 </html>
