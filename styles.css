@@ -6,7 +6,10 @@
         transform: rotate(360deg);
     }
 }
-
+#link0 {
+    animation: rotateVinyl 10s linear infinite;
+    transform-origin: center center;
+}
 
 
 
