@@ -3,7 +3,8 @@
 <head>
     <title>Selezione di link con HTML e JavaScript</title>
     <link rel="stylesheet" type="text/css" href="styles.css">
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700&display=swap">
+	<link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,latin-ext" rel="stylesheet">
+
     <style>
   * {
     margin: 0;
@@ -37,6 +38,7 @@ img {
 #testata {
     position: relative;
     z-index: 10;
+	
 }
 
 #link0 {
@@ -93,6 +95,28 @@ img {
 	line-height: 1;
 }
 
+#specialButton2 {
+    position: absolute;
+    top: 70%; 
+    left: 50%;
+    transform: translate(-50%, -50%);  /* Centra il bottone sull'immagine */
+    z-index: 30;  /* Un valore più alto dell'immagine per assicurarti che sia sopra */
+    background-color: #63b0b3;
+    color: #fff;   /* Colore del testo */
+    padding: 10px 150px;
+    border-radius: 80px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 800;
+    font-size: 37px;
+    text-decoration: none;  /* Rimuove il sottolineamento dal link */
+    display: inline-block;  /* Permette l'uso di padding e altre proprietà */
+    transition: background-color 0.3s;
+    text-align: center;  /* Allinea il testo al centro */
+    white-space: nowrap;  /* Permette al testo di andare a capo */
+	line-height: 1;
+	 margin-top: 5px;
+}
+
 #specialButton .line1 {
     font-size: 30px;
     color: #fff; /* ad esempio, un rosso */
@@ -105,10 +129,53 @@ img {
 
 
 
+#desktopMessage {
+        display: none; /* Nascosto di default */
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #bf3630;
+        color: #fff;
+        text-align: center;
+        z-index: 1000; /* Si assicura che il messaggio sia sopra tutto il resto */
+        padding-top: 50px;
+    }
+	
+#desktopMessage p:first-child {
+    margin-top: 200px; /* Spazio superiore solo per il primo paragrafo */
+}
+
+#desktopMessage p {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 800;
+    font-size: 37px;
+    margin-top: 5px; /* Aggiunge spazio solo in basso */
+}
+
+
+#qrCodeImage {
+    width: 400px;  /* Larghezza dell'immagine del QR code */
+    height: 400px; /* Altezza dell'immagine del QR code */
+    margin-top: 22px; /* Spazio sopra l'immagine del QR code */
+}
+
+
     </style>
 </head>
 <body>
-
+    <div id="desktopMessage">	
+        <p>Questo contenuto &egrave; ottimizzato per la visualizzazione su dispositivi mobili.</p>
+        <p>Per favore, scansiona questo codice QR con il tuo dispositivo mobile e</p>
+		<p>crea la tua dedica:</p>
+        <!-- Aggiungi qui il tuo codice QR -->
+       <img src="qr_code.png" alt="QR Code" id="qrCodeImage">
+	   <a href="https://open.spotify.com/playlist/4DOsjTjwW4ZVJiDKs075cI?si=ac07e18e023e4b2a" id="specialButton2">
+    <span class="line1">ASCOLTA LA</span><br>
+    <span class="line2">PLAYLIST</span>
+</a>
+    </div>
 <div id="container">
     <textarea id="messageInput" rows="1" maxlength="44" placeholder="Scrivi la tua dedica" oninput="autoResize(this); checkMaxLength(this);"></textarea>
 	<img id="fiocchi" src="fiocchi.png" alt="Immagine 00">
@@ -123,7 +190,7 @@ img {
 	<img id="link7" src="7.png" alt="Immagine 7">
 	<div class="playlist-container">
     <img id="link8" src="8.png" alt="Immagine 8">
-<a href="https://open.spotify.com/intl-it/album/2ojsnLAKwDMT0k3sU0ur0x?si=ziYdS2EMRKGezEy_brAJvQ" id="specialButton">
+<a href="https://open.spotify.com/playlist/4DOsjTjwW4ZVJiDKs075cI?si=ac07e18e023e4b2a" id="specialButton">
     <span class="line1">ASCOLTA LA</span><br>
     <span class="line2">PLAYLIST</span>
 </a>
@@ -135,12 +202,13 @@ img {
 <script>
     var link1 = "dedica.html";
     var link2 = "dedica2.html";
-    var link3 = "dedica.html";
-	var link4 = "dedica.html";
-    var link5 = "dedica.html";
-    var link6 = "dedica.html";
-    var link7 = "dedica.html";
+    var link3 = "dedica3.html";
+	var link4 = "dedica4.html";
+    var link5 = "dedica5.html";
+    var link6 = "dedica6.html";
+    var link7 = "dedica7.html";
     
+	
 function checkSecondLine(textarea) {
     var lines = textarea.value.split('\n');
     
@@ -235,13 +303,84 @@ document.getElementById("messageInput").addEventListener("focus", function() {
         imageClickHandler("link7", link7);
     });
 	
-
-
-
-    function autoResize(textarea) {
+ function autoResize(textarea) {
         textarea.style.height = 'auto';             // Reset the height
         textarea.style.height = textarea.scrollHeight + 'px';  // Set the height
     }
+	
+let isDragging = false;
+let originX = null;
+let rotationDegrees = 0;
+let lastRotationDegrees = null;
+let vinile = document.getElementById('link0');
+
+// Funzione per avviare il trascinamento
+function startDrag(e) {
+  isDragging = true;
+  originX = e.type.includes('mouse') ? e.pageX : e.touches[0].pageX;
+  e.preventDefault();
+}
+
+// Funzione che si attiva durante il trascinamento
+function doDrag(e) {
+  if (!isDragging) return;
+  let currentPageX = e.type.includes('mouse') ? e.pageX : e.touches[0].pageX;
+  let deltaX = currentPageX - originX;
+  rotationDegrees += deltaX * 0.2;
+
+  vinile.style.transform = `rotate(${rotationDegrees}deg)`;
+  originX = currentPageX;
+  e.preventDefault();
+}
+
+// Funzione per terminare il trascinamento
+function endDrag(e) {
+  if (!isDragging) return;
+  isDragging = false;
+  lastRotationDegrees = rotationDegrees;
+  vinile.style.transform = `rotate(${rotationDegrees}deg)`;
+  e.preventDefault();
+}
+
+// Funzione per avviare la rotazione automatica
+function startAutoRotation() {
+  if (!isDragging) {
+    // Avvia il timer per la rotazione automatica
+    setInterval(() => {
+      rotationDegrees += 1;
+      vinile.style.transform = `rotate(${rotationDegrees}deg)`;
+    }, 15);
+  } else {
+    lastRotationDegrees = rotationDegrees;
+  }
+}
+
+// Aggiunge gli event listener all'immagine del vinile
+vinile.addEventListener('mousedown', startDrag);
+vinile.addEventListener('mousemove', doDrag);
+vinile.addEventListener('mouseup', endDrag);
+vinile.addEventListener('mouseleave', endDrag);
+vinile.addEventListener('touchstart', startDrag);
+vinile.addEventListener('touchmove', doDrag);
+vinile.addEventListener('touchend', endDrag);
+
+// Avvia la rotazione automatica
+startAutoRotation();
+
+        function isMobileDevice() {
+            return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        }
+
+        // Funzione per mostrare un messaggio se l'utente non è su un dispositivo mobile
+        function showMessageForDesktop() {
+            var messageDiv = document.getElementById('desktopMessage');
+            if (!isMobileDevice()) {
+                messageDiv.style.display = 'block';
+            }
+        }
+
+        // Chiamata alla funzione all'avvio
+        showMessageForDesktop()
 
 </script>
 </body>
