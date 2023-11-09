@@ -216,13 +216,20 @@ iframe {
     <div class="iframe-wrapper">
         <a href="https://open.spotify.com/track/0bYg9bo50gSsH3LtXe2SQn?context=spotify:playlist:4DOsjTjwW4ZVJiDKs075cI" target="_blank">
             <button id="overlayButton"></button>
+<<<<<<< HEAD
 			
+=======
+>>>>>>> 19455b95875cacfdb106c147a8aa4bccefb780e5
         </a>
     </div>
 	
     
     <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/0bYg9bo50gSsH3LtXe2SQn?utm_source=generator" width="385" height="170" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+<<<<<<< HEAD
     <button id="openImageInput">INSERISCI FOTO</button>
+=======
+    <button id="openImageInput" onclick="document.getElementById('fileToUpload').click();">INSERISCI FOTO</button>
+>>>>>>> 19455b95875cacfdb106c147a8aa4bccefb780e5
     <button id="shareButton" onclick="submitForm();">CONDIVIDI</button>
     <button id="createCardButton" style="display: none;" onclick="window.location.href='https://fabiocampobasso.github.io/Calendario_natale/'">CREA IL TUO BIGLIETTO</button>
 </div>
@@ -260,7 +267,12 @@ document.addEventListener("DOMContentLoaded", function() {
 	
 document.getElementById("openImageInput").addEventListener("click", function() {
     document.getElementById('fileToUpload').click();
+<<<<<<< HEAD
     this.style.display = "none"; // Nascondi il bottone dopo il click se necessario.
+=======
+    // Nascondere il pulsante "INSERISCI FOTO" dopo il click.
+    this.style.display = "none";
+>>>>>>> 19455b95875cacfdb106c147a8aa4bccefb780e5
 });
 
 
